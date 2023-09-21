@@ -3,16 +3,16 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=thomaslaurenson&label=Profile%20views&color=0e75b6&style=flat" alt="thomaslaurenson" /> </p>
 
-- :mag: I'm currently looking for a job!
+- :mag: **I'm currently looking for a job!**
 
-- 🔭 I’m currently working on [The Gray Dot](https://github.com/thegraydot)
+- :telescope: I’m currently working on [The Gray Dot](https://github.com/thegraydot)
 
-- 🌱 I’m currently learning **more about C++**
+- :seedling: I’m currently learning **more about C++**
 
-- 👨‍💻 Some of my projects are available at [my personal website](https://www.thomaslaurenson.com/#portfolio)
+- :file_folder: Some of my projects are available at [my personal website](https://www.thomaslaurenson.com/#portfolio)
 
-- 📝 I regularly write articles on [The Gray Dot blog](https://thegraydot.io/blog)
+- :page_facing_up: I regularly write articles on [The Gray Dot blog](https://thegraydot.io/blog)
 
-- 📫 Reach me on **thomas@thomaslaurenson.com**
+- :email: Reach me on **thomas@thomaslaurenson.com**
 
-- 📄 Connect with me [on LinkedIn](https://www.linkedin.com/in/thomaslaurenson/)
+- :link: Connect with me on [LinkedIn](https://www.linkedin.com/in/thomaslaurenson/)
