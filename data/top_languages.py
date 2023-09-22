@@ -146,7 +146,7 @@ def plot_github_top_languages(langs, mode):
     ax.set_position([box.x0, box.y0 + box.height * 0.35, box.width, box.height * 0.65])
 
     ax.legend(
-        loc="upper center", bbox_to_anchor=(0.5, 0), fancybox=True, shadow=True, ncol=5, framealpha=0, labelcolor="black" if mode == "light" else "white"
+        loc="upper center", bbox_to_anchor=(0.5, 0), fancybox=True, ncol=5, framealpha=0, labelcolor="black" if mode == "light" else "white"
     )
     plt.savefig(f"top_languages_{mode}.png", format='png', transparent=True)
 
