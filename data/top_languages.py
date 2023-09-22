@@ -75,7 +75,7 @@ def parse_github_top_languages(langs: list, skip_langs: list, count) -> dict:
     return langs
 
 
-def plot_github_top_languages(langs):
+def plot_github_top_languages(langs, mode):
     # Crunch some data
     langs_total = sum(langs.values())
 
@@ -136,7 +136,7 @@ def plot_github_top_languages(langs):
             y,
             percentage,
             ha="center",
-            color="white",
+            color="black" if mode == "light" else "white",
             weight="bold",
             size=8,
         )
@@ -146,20 +146,18 @@ def plot_github_top_languages(langs):
     ax.set_position([box.x0, box.y0 + box.height * 0.35, box.width, box.height * 0.65])
 
     ax.legend(
-        loc="upper center", bbox_to_anchor=(0.5, 0), fancybox=True, shadow=True, ncol=5
+        loc="upper center", bbox_to_anchor=(0.5, 0), fancybox=True, shadow=True, ncol=5, framealpha=0, labelcolor="black" if mode == "light" else "white"
     )
-
-    # plt.show()
-    plt.savefig("top_languages.png", format='png', transparent=True)
+    plt.savefig(f"top_languages_{mode}.png", format='png', transparent=True)
 
 
 def main():
     # Fetch data from GitHub to make chart
-    skip_repos = [] 
-    langs = None
-    if not langs:
-        print("[*] Fetching data from GitHub...")
-        langs = fetch_github_top_languages(skip_repos)
+    # skip_repos = [] 
+    # langs = None
+    # if not langs:
+    #     print("[*] Fetching data from GitHub...")
+    #     langs = fetch_github_top_languages(skip_repos)
 
     # Parse the raw GitHub data
     with open("langs.json") as f:
@@ -173,7 +171,8 @@ def main():
     print("[*] Parse data from GitHub...")
     langs = parse_github_top_languages(langs, skip_langs, count)
 
-    plot_github_top_languages(langs)
+    for mode in ["light", "dark"]:
+        plot_github_top_languages(langs, mode)
 
 
 if __name__ == "__main__":
