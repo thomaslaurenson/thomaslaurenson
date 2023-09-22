@@ -15,6 +15,9 @@
 
 - :link: Connect with me on [LinkedIn](https://www.linkedin.com/in/thomaslaurenson/)
 
-<p align="center"> <img src="data/top_languages.png" alt="Thomas Laurenson's Top Programming Languages" /> </p>
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="data/top_languages_dark.png">
+<img alt="Thomas Laurenson's Top Programming Languages" src="data/top_languages_light.png">
+</picture>
 
 <p align="center"> <img src="https://komarev.com/ghpvc/?username=thomaslaurenson&label=Profile%20views&color=0e75b6&style=flat" alt="thomaslaurenson" /> </p>
