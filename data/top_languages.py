@@ -11,53 +11,65 @@ import matplotlib.pyplot as plt
 dotenv.load_dotenv()
 ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
 
+VERBOSE = False
 
-def fetch_github_top_languages(skip_repos: list) -> dict:
+
+def fetch_github_top_languages() -> dict:
+    print("[*] Fetching data from GitHub...")
     auth = github.Auth.Token(ACCESS_TOKEN)
     g = github.Github(auth=auth)
 
-    # Structure for counting language use
-    # Language is counted/stored as bytes (int)
-    langs = collections.defaultdict(int)
+    # Structure for counting repos metadata
     repos = dict()
 
     count = 0
     # Loop through all repos for the user
     for repo in g.get_user().get_repos():
-        # Skip repo is requested
-        if repo.full_name in skip_repos:
-            print(f"[*] Skipping: {repo.full_name}")
-            continue
-
-        print(f"[*] Processing: {repo.full_name}")
+        print(f"[*] Fetching: {repo.full_name}")
 
         # For the specific repo, get dict of languages used
         lang_dict = repo.get_languages()
-        for lang, size in lang_dict.items():
-            langs[lang] += size
-            print(f"    [*] {lang}: {size}")
-        
+
         # Also, save the repo languages
         repos[repo.full_name] = lang_dict
 
+        count += 1
         # Useful for testing, only fetch a couple repos
-        # count += 1
         # if count > 10:
         #      break
 
     # Save data
-    with open("langs.json", "w") as f:
-        json.dump(langs, f, indent=4)
     with open("repos.json", "w") as f:
         json.dump(repos, f, indent=4)
-    
+
     return langs
 
 
-def parse_github_top_languages(langs: list, skip_langs: list, count) -> dict:
-    # Remove erroneous languages
-    for language in skip_langs:
-        langs.pop(language)
+def parse_github_top_languages(
+    repos: list, skip_repos: list, skip_langs: list, count
+) -> dict:
+    print("[*] Parse data from GitHub...")
+
+    langs = collections.defaultdict(int)
+
+    for repo_name, langs_dict in repos.items():
+        # Skip repo if requested
+        if repo_name in skip_repos:
+            print(f"[*] Skipping repo: {repo_name}")
+            continue
+
+        print(f"[*] Processing repo: {repo_name}")
+
+        for language, size in langs_dict.items():
+            # Skip language if requested
+            if language.lower() in skip_langs:
+                if VERBOSE:
+                    print(f"    [*] {language}: {size} SKIPPING!")
+                continue
+
+            langs[language] += size
+            if VERBOSE:
+                print(f"    [*] {language}: {size}")
 
     # Sort languages by highest count
     langs = sorted(langs.items(), key=lambda x: x[1], reverse=True)
@@ -68,14 +80,17 @@ def parse_github_top_languages(langs: list, skip_langs: list, count) -> dict:
     # Sorted outputs a list of tuples, so convert back to dict
     langs = dict(langs)
 
-    print("[*] Top languages:")
-    for k, v in langs.items():
-        print(f"    [*] {k}: {v}")
+    if VERBOSE:
+        print("[*] Top languages:")
+        for k, v in langs.items():
+            print(f"    [*] {k}: {v}")
 
     return langs
 
 
 def plot_github_top_languages(langs, mode):
+    print("[*] Plotting data from GitHub...")
+
     # Crunch some data
     langs_total = sum(langs.values())
 
@@ -95,7 +110,7 @@ def plot_github_top_languages(langs, mode):
     ]
 
     # Set size of figure
-    fig = plt.figure(figsize=(8,2))
+    fig = plt.figure(figsize=(8, 2))
     ax = plt.subplot(111)
 
     # Plot the data
@@ -146,34 +161,85 @@ def plot_github_top_languages(langs, mode):
     ax.set_position([box.x0, box.y0 + box.height * 0.35, box.width, box.height * 0.65])
 
     ax.legend(
-        loc="upper center", bbox_to_anchor=(0.5, 0), fancybox=True, ncol=5, framealpha=0, labelcolor="black" if mode == "light" else "white"
+        loc="upper center",
+        bbox_to_anchor=(0.5, 0),
+        fancybox=True,
+        ncol=5,
+        framealpha=0,
+        labelcolor="black" if mode == "light" else "white",
     )
-    plt.savefig(f"top_languages_{mode}.png", format='png', transparent=True)
 
+    # Add a title
+    plt.title(
+        "Top Programming Languages",
+        {"color": "black" if mode == "light" else "white", "fontweight": "bold"},
+    )
 
-def main():
-    # Fetch data from GitHub to make chart
-    # skip_repos = [] 
-    # langs = None
-    # if not langs:
-    #     print("[*] Fetching data from GitHub...")
-    #     langs = fetch_github_top_languages(skip_repos)
-
-    # Parse the raw GitHub data
-    with open("langs.json") as f:
-        langs = json.load(f)
-    skip_langs = [
-        "Lua",
-        "TeX",
-        "HTML",
-    ]
-    count = 5
-    print("[*] Parse data from GitHub...")
-    langs = parse_github_top_languages(langs, skip_langs, count)
-
-    for mode in ["light", "dark"]:
-        plot_github_top_languages(langs, mode)
+    plt.savefig(f"top_languages_{mode}.png", format="png", transparent=True)
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-r",
+        "--skip_repos",
+        nargs="+",
+        help="Repository names to exclude (e.g., owner/name)",
+        default=list(),
+        required=False,
+    )
+    parser.add_argument(
+        "-p",
+        "--skip_languages",
+        nargs="+",
+        help="Programming languages to exclude",
+        default=list(),
+        required=False,
+    )
+    parser.add_argument(
+        "-c",
+        "--count",
+        help="Count of languages to include on graph",
+        default=5,
+        required=False,
+    )
+    parser.add_argument(
+        "-l",
+        "--load",
+        action="store_true",
+        help="Load repo metadata from file",
+        default=True,
+        required=False,
+    )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Verbose output",
+        default=False,
+        required=False,
+    )
+    args = parser.parse_args()
+
+    skip_repos = args.skip_repos
+    skip_languages = args.skip_languages
+    count = int(args.count)
+    load = args.load
+    VERBOSE = args.verbose
+    print(skip_languages)
+
+    # Get repo metadata
+    # Load from file (repos.json) or re-dump
+    repos = None
+    if load:
+        with open("repos.json") as f:
+            repos = json.load(f)
+    else:
+        repos = fetch_github_top_languages()
+
+    # Process repos metadata to get top languages
+    langs = parse_github_top_languages(repos, skip_repos, skip_languages, count)
+
+    # Create a light + dark mode chart
+    for mode in ["light", "dark"]:
+        plot_github_top_languages(langs, mode)

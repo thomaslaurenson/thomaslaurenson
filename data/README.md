@@ -13,5 +13,5 @@ Make a personal access token (under Settings > Developer Settings > Personal acc
 python3 -m venv venv
 source ./venv/bin/activate
 pip3 install -r requirements.txt
-python3 top_languages.py
+python3 top_languages.py -p html tex lua -c 5 -l -r thomaslaurenson/arduino-lmic -v
 ```
