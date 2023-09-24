@@ -15,8 +15,6 @@
 
 - :link: Connect with me on [LinkedIn](https://www.linkedin.com/in/thomaslaurenson/)
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=thomaslaurenson&show_icons=true&theme=transparent)
-
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="data/top_languages_dark.png">
 <img alt="Thomas Laurenson's Top Programming Languages" src="data/top_languages_light.png">
