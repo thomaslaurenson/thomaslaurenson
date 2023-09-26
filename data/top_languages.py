@@ -2,6 +2,7 @@ import argparse
 import collections
 import json
 import os
+import pathlib
 
 import dotenv
 import github
@@ -14,37 +15,6 @@ ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
 VERBOSE = False
 
 
-def fetch_github_top_languages() -> dict:
-    print("[*] Fetching data from GitHub...")
-    auth = github.Auth.Token(ACCESS_TOKEN)
-    g = github.Github(auth=auth)
-
-    # Structure for counting repos metadata
-    repos = dict()
-
-    count = 0
-    # Loop through all repos for the user
-    for repo in g.get_user().get_repos():
-        print(f"[*] Fetching: {repo.full_name}")
-
-        # For the specific repo, get dict of languages used
-        lang_dict = repo.get_languages()
-
-        # Also, save the repo languages
-        repos[repo.full_name] = lang_dict
-
-        count += 1
-        # Useful for testing, only fetch a couple repos
-        # if count > 10:
-        #      break
-
-    # Save data
-    with open("repos.json", "w") as f:
-        json.dump(repos, f, indent=4)
-
-    return langs
-
-
 def parse_github_top_languages(
     repos: list, skip_repos: list, skip_langs: list, count
 ) -> dict:
@@ -52,13 +22,15 @@ def parse_github_top_languages(
 
     langs = collections.defaultdict(int)
 
-    for repo_name, langs_dict in repos.items():
+    for repo_name, repo_dict in repos.items():
         # Skip repo if requested
         if repo_name in skip_repos:
             print(f"[*] Skipping repo: {repo_name}")
             continue
 
         print(f"[*] Processing repo: {repo_name}")
+
+        langs_dict = repo_dict["top_languages"]
 
         for language, size in langs_dict.items():
             # Skip language if requested
@@ -107,6 +79,9 @@ def plot_github_top_languages(langs, mode):
         "#bd7ebe",
         "#ffb55a",
         "#ffee65",
+        "#beb9db",
+        "#fdcce5",
+        "#8bd3c7",
     ]
 
     # Set size of figure
@@ -204,14 +179,6 @@ if __name__ == "__main__":
         required=False,
     )
     parser.add_argument(
-        "-l",
-        "--load",
-        action="store_true",
-        help="Load repo metadata from file",
-        default=True,
-        required=False,
-    )
-    parser.add_argument(
         "-v",
         "--verbose",
         action="store_true",
@@ -224,18 +191,23 @@ if __name__ == "__main__":
     skip_repos = args.skip_repos
     skip_languages = args.skip_languages
     count = int(args.count)
-    load = args.load
-    VERBOSE = args.verbose
-    print(skip_languages)
+    if count > 9:
+        print("[*] Count is too large. Choose between 2-9.")
+        exit(1)
 
-    # Get repo metadata
-    # Load from file (repos.json) or re-dump
+    VERBOSE = args.verbose
+
+    # Check repos.json file exists
+    repos_file = pathlib.Path("repos.json")
+    if not repos_file.is_file():
+        print("[*] The repos.json file does not exist.")
+        print("[*] Add access token to .env and run python3 fetch_repo_metadata.py")
+        exit(1)
+
+    # Get repo metadata from repos.json file
     repos = None
-    if load:
-        with open("repos.json") as f:
-            repos = json.load(f)
-    else:
-        repos = fetch_github_top_languages()
+    with open("repos.json") as f:
+        repos = json.load(f)
 
     # Process repos metadata to get top languages
     langs = parse_github_top_languages(repos, skip_repos, skip_languages, count)
