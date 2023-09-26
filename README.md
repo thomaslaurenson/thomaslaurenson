@@ -1,15 +1,17 @@
 <h1 align="center">Hi 👋 I'm Thomas</h1>
 <h3 align="center">A passionate security researcher/engineer and a major geek from New Zealand</h3>
 
+- :penguin: Have a look at my [personal website](https://www.thomaslaurenson.com) for a brief overview
+
 I am currently...
 
 - :mag: **Looking for work!**
 
-- :telescope: Working on [The Gray Dot](https://github.com/thegraydot) projects
-
 - :seedling: Learning **more about C++ and Golang**
 
-:email: Reach me on thomas@thomaslaurenson.com
+- :telescope: Working on [The Gray Dot](https://github.com/thegraydot) projects
+
+:email: Reach me via [email](thomas@thomaslaurenson.com)
 
 :link: Connect with me on [LinkedIn](https://www.linkedin.com/in/thomaslaurenson/)
 
