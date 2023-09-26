@@ -20,4 +20,7 @@ I am currently...
 <img alt="Thomas Laurenson's Top Programming Languages" src="data/top_languages_light.png">
 </picture>
 
-<p align="center"> <img src="https://komarev.com/ghpvc/?username=thomaslaurenson&label=Profile%20views&color=0e75b6&style=plastic" alt="Thomas Laurenson's GitHub profile view count" /> </p>
+<p align="center">
+    <img src="https://komarev.com/ghpvc/?username=thomaslaurenson&label=Profile%20views&color=0e75b6&style=flat" alt="Thomas Laurenson's GitHub profile view count" />
+    <img src="https://user-badge.committers.top/new_zealand/thomaslaurenson.svg" alt="Thomas Laurenson's Top NZ Committers Rank" />
+</p>
