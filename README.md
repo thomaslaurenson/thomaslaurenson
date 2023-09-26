@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋 I'm Thomas</h1>
 <h3 align="center">A passionate security researcher/engineer and a major geek from New Zealand</h3>
 
-- :penguin: Have a look at my [personal website](https://www.thomaslaurenson.com) for a brief overview
+:penguin: For a brief intro, have a look at my [personal website](https://www.thomaslaurenson.com)
 
 I am currently...
 
