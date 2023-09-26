@@ -15,12 +15,28 @@ I am currently...
 
 :link: Connect with me on [LinkedIn](https://www.linkedin.com/in/thomaslaurenson/)
 
-<picture>
-<source media="(prefers-color-scheme: dark)" srcset="data/top_languages_dark.png">
-<img alt="Thomas Laurenson's Top Programming Languages" src="data/top_languages_light.png">
-</picture>
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="cards/github_stats_card_dark.svg">
+    <img alt="Thomas Laurenson's GitHub Stats" src="cards/github_stats_card_light.svg">
+  </picture>
+</div>
 
-<p align="center">
-    <img src="https://komarev.com/ghpvc/?username=thomaslaurenson&label=Profile%20views&color=0e75b6&style=flat" alt="Thomas Laurenson's GitHub profile view count" />
-    <img src="https://user-badge.committers.top/new_zealand/thomaslaurenson.svg" alt="Thomas Laurenson's Top NZ Committers Rank" />
-</p>
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="cards/github_streak_card_dark.svg">
+    <img alt="Thomas Laurenson's GitHub Streak" src="cards/github_streak_card_light.svg">
+  </picture>
+</div>
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="cards/github_languages_card_dark.svg">
+    <img alt="Thomas Laurenson's GitHub Top Languages" src="cards/github_languages_card_light.svg">
+  </picture>
+</div>
+
+<div align="center" style="padding-top: 15px;">
+  <img src="https://komarev.com/ghpvc/?username=thomaslaurenson&label=Profile%20views&color=0e75b6&style=flat" alt="Thomas Laurenson's GitHub profile view count" />
+  <img src="https://user-badge.committers.top/new_zealand/thomaslaurenson.svg" alt="Thomas Laurenson's Top NZ Committers Rank" />
+</div>
