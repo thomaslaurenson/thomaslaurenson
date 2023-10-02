@@ -8,6 +8,8 @@ USERNAME="thomaslaurenson"
 DIRECTORY=$(dirname "$0")
 cd $DIRECTORY
 
+## STATS
+
 # Start github-readme-stats Docker container
 echo "[*] Building github-readme-stats Docker environment..."
 PROJECT="github-readme-stats"
@@ -38,8 +40,27 @@ docker container rm github-readme-stats
 docker image rm github-readme-stats
 cd ..
 
+## STREAKS
+
+# Start github-readme-streak-stats Docker container
+echo "[*] Building github-readme-streak-stats Docker environment..."
+PROJECT="github-readme-streak-stats"
+cd "$PROJECT"
+docker image build -t "$PROJECT" .
+docker run --name "$PROJECT" -p 8080:80 -d "$PROJECT"
+
+echo "[*] Waiting for API to be available..."
+sleep 10
+
 # Query streak API
 echo "[*] Fetching streak_card..."
-curl "https://streak-stats.demolab.com?user=$USERNAME&theme=dark&hide_border=true&date_format=M%20j%5B%2C%20Y%5D&exclude_days=Sun%2CSat&background=00000000" -o github_streak_card_dark.svg
+curl -L "http://localhost:8080/github-readme-streak-stats/src?user=$USERNAME&theme=dark&hide_border=true&date_format=M%20j%5B%2C%20Y%5D&exclude_days=Sun%2CSat&background=00000000" -o ../github_streak_card_dark.svg
 
-curl "https://streak-stats.demolab.com?user=$USERNAME&theme=default&hide_border=true&date_format=M%20j%5B%2C%20Y%5D&exclude_days=Sun%2CSat&background=00000000" -o github_streak_card_light.svg
+curl -L "http://localhost:8080/github-readme-streak-stats/src?user=$USERNAME&theme=default&hide_border=true&date_format=M%20j%5B%2C%20Y%5D&exclude_days=Sun%2CSat&background=00000000" -o ../github_streak_card_light.svg
+
+# Stop github-readme-streak-stats Docker container and delete everything
+echo "[*] Destroying github-readme-streak-stats Docker environment..."
+docker container stop github-readme-streak-stats
+docker container rm github-readme-streak-stats
+docker image rm github-readme-streak-stats
+cd ..

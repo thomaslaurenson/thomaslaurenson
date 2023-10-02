@@ -1,7 +1,3 @@
-# Custom
-/data/repos.json
-/data/langs.json
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
