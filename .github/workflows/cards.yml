@@ -1,9 +1,8 @@
 name: Generate Stats Cards
 
 on:
-  push:
-    branches:
-      - add-actions-for-cards
+  schedule:
+    - cron: "0 0 * * 1-5"
 
 jobs:
   github-readme-stats:
