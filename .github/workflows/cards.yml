@@ -68,6 +68,8 @@ jobs:
 
   commit-cards:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: [github-readme-stats, github-readme-streak-stats]
 
     steps:
