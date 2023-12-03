@@ -8,11 +8,9 @@ on:
 jobs:
   github-readme-stats:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     env:
       USERNAME: "thomaslaurenson"
-      PAT_1: "${{ secrets.GITHUB_TOKEN }}"
+      PAT_1: "${{ secrets.PAT_1 }}"
 
     steps:
       - uses: actions/checkout@v4
@@ -48,8 +46,6 @@ jobs:
 
   github-readme-streak-stats:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     env:
       USERNAME: "thomaslaurenson"
 
@@ -72,8 +68,6 @@ jobs:
 
   commit-cards:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     needs: [github-readme-stats, github-readme-streak-stats]
 
     steps:
