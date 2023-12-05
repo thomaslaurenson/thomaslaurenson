@@ -2,7 +2,7 @@ name: Generate Stats Cards
 
 on:
   schedule:
-    - cron: "0 0 * * 1-5"
+    - cron: "15 6 * * *"
 
 jobs:
   github-readme-stats:
@@ -33,10 +33,48 @@ jobs:
         run: |
           node express.js &
           sleep 10
-          curl "http://localhost:9000/?username=$USERNAME&count_private=true&hide_border=true&bg_color=00000000&title_color=FFFFFF&text_color=FFFFFF&show_icons=true&icon_color=FF8300&ring_color=FF8300" -o ../tempcards/github_stats_card_dark.svg
-          curl "http://localhost:9000/?username=$USERNAME&count_private=true&hide_border=true&bg_color=FFFFFFFF&title_color=000000&text_color=000000&show_icons=true&icon_color=FF8300&ring_color=FF8300" -o ../tempcards/github_stats_card_light.svg
-          curl "http://localhost:9000/top-langs?username=$USERNAME&count_private=true&hide=tex,html&layout=donut&hide_border=true&bg_color=00000000&title_color=FFFFFF&text_color=FFFFFF" -o ../tempcards/github_languages_card_dark.svg
-          curl "http://localhost:9000/top-langs?username=$USERNAME&count_private=true&hide=tex,html&layout=donut&hide_border=true&bg_color=FFFFFF&title_color=000000&text_color=000000" -o ../tempcards/github_languages_card_light.svg
+          curl -G http://localhost:9000/ \
+            -d username=$USERNAME \
+            -d count_private=true \
+            -d hide_border=true \
+            -d bg_color=00000000 \
+            -d title_color=FFFFFF \
+            -d text_color=FFFFFF \
+            -d show_icons=true \
+            -d icon_color=FF8300 \
+            -d ring_color=FF8300 \
+            -o ../tempcards/github_stats_card_dark.svg
+          curl -G http://localhost:9000/ \
+            -d username=$USERNAME \
+            -d count_private=true \
+            -d hide_border=true \
+            -d bg_color=FFFFFFFF \
+            -d title_color=000000 \
+            -d text_color=000000 \
+            -d show_icons=true \
+            -d icon_color=FF8300 \
+            -d ring_color=FF8300 \
+            -o ../tempcards/github_stats_card_light.svg
+          curl -G http://localhost:9000/top-langs/ \
+            -d username=$USERNAME \
+            -d count_private=true \
+            -d hide=tex,html \
+            -d layout=donut \
+            -d hide_border=true \
+            -d bg_color=00000000 \
+            -d title_color=FFFFFF \
+            -d text_color=FFFFFF \
+            -o ../tempcards/github_languages_card_dark.svg
+          curl -G http://localhost:9000/top-langs/ \
+            -d username=$USERNAME \
+            -d count_private=true \
+            -d hide=tex,html \
+            -d layout=donut \
+            -d hide_border=true \
+            -d bg_color=FFFFFF \
+            -d title_color=000000 \
+            -d text_color=000000 \
+            -o ../tempcards/github_languages_card_light.svg
 
       - uses: actions/upload-artifact@v3
         with:
@@ -57,8 +95,22 @@ jobs:
 
       - name: Fetch GitHub streak SVGs
         run: |
-          curl "https://streak-stats.demolab.com/?user=$USERNAME&theme=dark&hide_border=true&date_format=M%20j%5B%2C%20Y%5D&exclude_days=Sun%2CSat&background=00000000" -o ./tempcards/github_streak_card_dark.svg
-          curl "https://streak-stats.demolab.com/?user=$USERNAME&theme=default&hide_border=true&date_format=M%20j%5B%2C%20Y%5D&exclude_days=Sun%2CSat&background=00000000" -o ./tempcards/github_streak_card_light.svg
+          curl -G https://streak-stats.demolab.com/ \
+            -d user=$USERNAME \
+            -d theme=dark \
+            -d hide_border=true \
+            -d date_format=M%20j%5B%2C%20Y%5D \
+            -d exclude_days=Sun%2CSat \
+            -d background=00000000 \
+            -o ./tempcards/github_streak_card_dark.svg
+          curl -G https://streak-stats.demolab.com/ \
+            -d user=$USERNAME \
+            -d theme=default \
+            -d hide_border=true \
+            -d date_format=M%20j%5B%2C%20Y%5D \
+            -d exclude_days=Sun%2CSat \
+            -d background=00000000 \
+            -o ./tempcards/github_streak_card_light.svg
 
       - uses: actions/upload-artifact@v3
         with:
