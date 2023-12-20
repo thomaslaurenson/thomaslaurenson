@@ -78,7 +78,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: tempcards
+          name: github-readme-stats-upload
           path: tempcards/
 
   github-readme-streak-stats:
@@ -114,7 +114,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: tempcards
+          name: github-readme-streak-stats-upload
           path: tempcards/
 
   commit-cards:
@@ -130,9 +130,14 @@ jobs:
         run: |
           echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v3
         with:
-          name: tempcards
+          name: github-readme-stats-upload
+          path: cards/
+  
+      - uses: actions/download-artifact@v3
+        with:
+          name: github-readme-streak-stats-upload
           path: cards/
 
       - uses: oleksiyrudenko/gha-git-credentials@v2-latest
