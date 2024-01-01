@@ -140,7 +140,7 @@ jobs:
           name: github-readme-streak-stats-upload
           path: cards/
 
-      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+      - uses: oleksiyrudenko/gha-git-credentials@v2
         with:
           name: "thomaslaurenson"
           email: "thomas@thomaslaurenson.com"
