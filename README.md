@@ -3,17 +3,19 @@
 
 :penguin: For a brief intro, have a look at my [personal website](https://www.thomaslaurenson.com)
 
-I am currently...
-
-- :mag: **Looking for work!**
-
-- :seedling: Learning **more about C++ and Golang**
-
-- :telescope: Working on [The Gray Dot](https://github.com/thegraydot) projects
-
 :email: Reach me via [email](thomas@thomaslaurenson.com)
 
 :link: Connect with me on [LinkedIn](https://www.linkedin.com/in/thomaslaurenson/)
+
+:construction: I am currently...
+
+- :seedling: Focussing on improving my **C++** skills
+
+- :telescope: Working on [The Gray Dot](https://github.com/thegraydot) projects
+
+- :video_game: Developing tools for **WoW Vanilla** (1.12)
+
+- :boom: Writing **comic book-releated software**
 
 <div align="center">
   <picture>
