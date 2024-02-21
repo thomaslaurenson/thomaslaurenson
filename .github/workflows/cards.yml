@@ -2,7 +2,7 @@ name: Generate Stats Cards
 
 on:
   schedule:
-    - cron: "30 19 * * *"
+    - cron: "30 19 * * 2,4"
 
 jobs:
   github-readme-stats:
