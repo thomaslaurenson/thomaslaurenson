@@ -9,7 +9,7 @@
         aria-labelledby="descId"
       >
         <title id="titleId">Thomas Laurenson's GitHub Stats, Rank: A-</title>
-        <desc id="descId">Total Stars Earned: 91, Total Commits in 2025 : 228, Total PRs: 143, Total Issues: 440, Contributed to (last year): 25</desc>
+        <desc id="descId">Total Stars Earned: 91, Total Commits in 2025 : 229, Total PRs: 146, Total Issues: 443, Contributed to (last year): 26</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 69.8870855056962;
+        stroke-dashoffset: 69.4728990624393;
       }
     }
   
@@ -177,7 +177,7 @@
         x="219.01"
         y="12.5"
         data-testid="commits"
-      >228</text>
+      >229</text>
     </g>
   </g><g transform="translate(0, 50)">
     <g class="stagger" style="animation-delay: 750ms" transform="translate(25, 0)">
@@ -192,7 +192,7 @@
         x="219.01"
         y="12.5"
         data-testid="prs"
-      >143</text>
+      >146</text>
     </g>
   </g><g transform="translate(0, 75)">
     <g class="stagger" style="animation-delay: 900ms" transform="translate(25, 0)">
@@ -207,7 +207,7 @@
         x="219.01"
         y="12.5"
         data-testid="issues"
-      >440</text>
+      >443</text>
     </g>
   </g><g transform="translate(0, 100)">
     <g class="stagger" style="animation-delay: 1050ms" transform="translate(25, 0)">
@@ -222,7 +222,7 @@
         x="219.01"
         y="12.5"
         data-testid="contribs"
-      >25</text>
+      >26</text>
     </g>
   </g>
     </svg>
