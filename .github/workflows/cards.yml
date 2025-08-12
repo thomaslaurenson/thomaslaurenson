@@ -12,7 +12,7 @@ jobs:
       PAT_1: "${{ secrets.PAT_1 }}"
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Make temp dir
         run: |
@@ -87,7 +87,7 @@ jobs:
       USERNAME: "thomaslaurenson"
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Make temp dir
         run: |
@@ -124,7 +124,7 @@ jobs:
     needs: [github-readme-stats, github-readme-streak-stats]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Get current date
         run: |
