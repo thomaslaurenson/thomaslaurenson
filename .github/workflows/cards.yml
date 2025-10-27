@@ -76,7 +76,7 @@ jobs:
             -d text_color=000000 \
             -o ../tempcards/github_languages_card_light.svg
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: github-readme-stats-upload
           path: tempcards/
@@ -112,7 +112,7 @@ jobs:
             -d background=00000000 \
             -o ./tempcards/github_streak_card_light.svg
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: github-readme-streak-stats-upload
           path: tempcards/
