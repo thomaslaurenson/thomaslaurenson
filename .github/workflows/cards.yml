@@ -130,12 +130,12 @@ jobs:
         run: |
           echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v7
         with:
           name: github-readme-stats-upload
           path: cards/
   
-      - uses: actions/download-artifact@v6
+      - uses: actions/download-artifact@v7
         with:
           name: github-readme-streak-stats-upload
           path: cards/
