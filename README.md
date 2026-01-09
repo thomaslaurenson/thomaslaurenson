@@ -1,19 +1,19 @@
 <h1 align="center">Hi 👋 I'm Thomas</h1>
 <h3 align="center">A passionate security researcher/engineer and a major geek from New Zealand</h3>
 
-:penguin: For a brief intro, have a look at my [personal website](https://www.thomaslaurenson.com)
+:penguin: Brief intro on my [personal website](https://www.thomaslaurenson.com)
 
 :email: Reach me via [email](thomas@thomaslaurenson.com)
 
 :link: Connect with me on [LinkedIn](https://www.linkedin.com/in/thomaslaurenson/)
 
+:telescope: See my hobby projects on [The Gray Dot](https://github.com/thegraydot)
+
 :construction: I am currently...
 
 - :seedling: Focussing on improving my **C++** skills
 
-- :telescope: Working on [The Gray Dot](https://github.com/thegraydot) projects
-
-- :video_game: Developing tools for **WoW Vanilla** (1.12)
+- :video_game: Developing tools for **WoW Vanilla, TBC and WoTLK**
 
 - :boom: Writing **comic book-releated software**
 
