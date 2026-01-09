@@ -1,0 +1,16 @@
+[project]
+name = "github-stats"
+version = "0.1.0"
+description = "GitHub statistics tooling"
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["src"]
