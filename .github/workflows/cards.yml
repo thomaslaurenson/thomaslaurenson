@@ -2,151 +2,48 @@ name: Generate Stats Cards
 
 on:
   schedule:
-    - cron: "30 19 * * 2,4"
+    - cron: "30 7 * * *"
 
 jobs:
   github-readme-stats:
-    runs-on: ubuntu-latest
-    env:
-      USERNAME: "thomaslaurenson"
-      PAT_1: "${{ secrets.PAT_1 }}"
-
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Make temp dir
-        run: |
-          mkdir tempcards
-
-      - name: Clone github-readme-stats repository
-        run: |
-          git clone https://github.com/anuraghazra/github-readme-stats.git
-
-      - name: Install dependencies
-        working-directory: ./github-readme-stats
-        run: |
-          npm install
-          npm install express
-
-      - name: Start server
-        working-directory: ./github-readme-stats
-        run: |
-          node express.js &
-          sleep 10
-          curl -G http://localhost:9000/ \
-            -d username=$USERNAME \
-            -d count_private=true \
-            -d hide_border=true \
-            -d bg_color=00000000 \
-            -d title_color=FFFFFF \
-            -d text_color=FFFFFF \
-            -d show_icons=true \
-            -d icon_color=FF8300 \
-            -d ring_color=FF8300 \
-            -o ../tempcards/github_stats_card_dark.svg
-          curl -G http://localhost:9000/ \
-            -d username=$USERNAME \
-            -d count_private=true \
-            -d hide_border=true \
-            -d bg_color=FFFFFFFF \
-            -d title_color=000000 \
-            -d text_color=000000 \
-            -d show_icons=true \
-            -d icon_color=FF8300 \
-            -d ring_color=FF8300 \
-            -o ../tempcards/github_stats_card_light.svg
-          curl -G http://localhost:9000/top-langs/ \
-            -d username=$USERNAME \
-            -d count_private=true \
-            -d hide=tex,html \
-            -d layout=donut \
-            -d hide_border=true \
-            -d bg_color=00000000 \
-            -d title_color=FFFFFF \
-            -d text_color=FFFFFF \
-            -o ../tempcards/github_languages_card_dark.svg
-          curl -G http://localhost:9000/top-langs/ \
-            -d username=$USERNAME \
-            -d count_private=true \
-            -d hide=tex,html \
-            -d layout=donut \
-            -d hide_border=true \
-            -d bg_color=FFFFFF \
-            -d title_color=000000 \
-            -d text_color=000000 \
-            -o ../tempcards/github_languages_card_light.svg
-
-      - uses: actions/upload-artifact@v6
-        with:
-          name: github-readme-stats-upload
-          path: tempcards/
-
-  github-readme-streak-stats:
-    runs-on: ubuntu-latest
-    env:
-      USERNAME: "thomaslaurenson"
-
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Make temp dir
-        run: |
-          mkdir tempcards
-
-      - name: Fetch GitHub streak SVGs
-        run: |
-          curl -G https://streak-stats.demolab.com/ \
-            -d user=$USERNAME \
-            -d theme=dark \
-            -d hide_border=true \
-            -d date_format=M%20j%5B%2C%20Y%5D \
-            -d exclude_days=Sun%2CSat \
-            -d background=00000000 \
-            -o ./tempcards/github_streak_card_dark.svg
-          curl -G https://streak-stats.demolab.com/ \
-            -d user=$USERNAME \
-            -d theme=default \
-            -d hide_border=true \
-            -d date_format=M%20j%5B%2C%20Y%5D \
-            -d exclude_days=Sun%2CSat \
-            -d background=00000000 \
-            -o ./tempcards/github_streak_card_light.svg
-
-      - uses: actions/upload-artifact@v6
-        with:
-          name: github-readme-streak-stats-upload
-          path: tempcards/
-
-  commit-cards:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-2404
     permissions:
       contents: write
-    needs: [github-readme-stats, github-readme-streak-stats]
+    env:
+      GITHUB_USERNAME: "${{ secrets.USERNAME }}"
+      GITHUB_TOKEN: "${{ secrets.TOKEN }}"
 
     steps:
       - uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install uv
+        run: pip install --upgrade uv
+
+      - name: Install project dependencies
+        run: uv sync
+
+      - name: Generate cards
+        run: |
+          uv run python -m src.github_stats_card
+          uv run python -m src.github_languages_card
+          uv run python -m src.github_streak_card
 
       - name: Get current date
         run: |
           echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
-      - uses: actions/download-artifact@v7
-        with:
-          name: github-readme-stats-upload
-          path: cards/
-  
-      - uses: actions/download-artifact@v7
-        with:
-          name: github-readme-streak-stats-upload
-          path: cards/
+      - name: Configure git user
+        run: |
+          git config user.name "cards-bot"
+          git config user.email "cards-bot@users.noreply.github.com"
 
-      - uses: oleksiyrudenko/gha-git-credentials@v2
-        with:
-          name: "thomaslaurenson"
-          email: "thomas@thomaslaurenson.com"
-          actor: "thomaslaurenson"
-          token: "${{ secrets.GITHUB_TOKEN }}"
-      - run: |
+      - name: Commit and push changes
+        run: |
           git add ./cards/*
           git commit -m "Generated new cards ($DATE)"
           git push || echo "Nothing to commit"
