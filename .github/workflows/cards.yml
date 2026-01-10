@@ -1,12 +1,12 @@
-name: Generate Stats Cards
+name: Generate Cards
 
 on:
   schedule:
-    - cron: "30 7 * * *"
+    - cron: "30 19 * * *"
 
 jobs:
-  github-readme-stats:
-    runs-on: ubuntu-2404
+  generate-cards:
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     env:
