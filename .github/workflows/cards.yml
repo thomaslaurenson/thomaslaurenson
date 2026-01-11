@@ -2,7 +2,7 @@ name: Generate Cards
 
 on:
   schedule:
-    - cron: "30 19 * * *"
+    - cron: "30 12 * * *"
 
 jobs:
   generate-cards:
@@ -10,8 +10,8 @@ jobs:
     permissions:
       contents: write
     env:
-      GITHUB_USERNAME: "${{ secrets.USERNAME }}"
-      GITHUB_TOKEN: "${{ secrets.TOKEN }}"
+      USERNAME: "${{ secrets.USERNAME }}"
+      TOKEN: "${{ secrets.TOKEN }}"
 
     steps:
       - uses: actions/checkout@v6
