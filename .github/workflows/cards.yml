@@ -2,7 +2,7 @@ name: Generate Cards
 
 on:
   schedule:
-    - cron: "30 12 * * *"
+    - cron: "00 8 * * *"
 
 jobs:
   generate-cards:
