@@ -1,12 +1,12 @@
 import requests
-from src.config import TOKEN, API_URL
+from src.config import GH_TOKEN, API_URL
 
 
 class GitHubClient:
 
     def __init__(self):
         self.headers = {
-            'Authorization': f'Bearer {TOKEN}',
+            'Authorization': f'Bearer {GH_TOKEN}',
             'Content-Type': 'application/json',
         }
 

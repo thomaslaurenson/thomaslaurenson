@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from src.config import USERNAME
+from src.config import GH_USERNAME
 from src.render_template import render_template
 from src.stats import GitHubStats
 
@@ -47,7 +47,7 @@ def main() -> None:
     dark_out, light_out = generate_github_streak_cards(
         templates_dir=templates_dir,
         output_dir=output_dir,
-        username=USERNAME,
+        username=GH_USERNAME,
     )
 
     print(f"Wrote {dark_out}")

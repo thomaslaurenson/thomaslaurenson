@@ -2,7 +2,7 @@ name: Generate Cards
 
 on:
   schedule:
-    - cron: "00 8 * * *"
+    - cron: "30 20 * * *"  # Runs daily at 20:30 UTC/7.30 NZT
 
 jobs:
   generate-cards:
@@ -10,8 +10,8 @@ jobs:
     permissions:
       contents: write
     env:
-      USERNAME: "${{ secrets.USERNAME }}"
-      TOKEN: "${{ secrets.TOKEN }}"
+      GH_USERNAME: "${{ secrets.USERNAME }}"
+      GH_TOKEN: "${{ secrets.GH_TOKEN }}"
 
     steps:
       - uses: actions/checkout@v6

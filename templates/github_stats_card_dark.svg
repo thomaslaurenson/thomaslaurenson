@@ -60,19 +60,19 @@
     }
 
     .icon {
-    fill: #FF8300;
+    fill: #2EA043;
     display: block;
     }
 
     .rank-circle-rim {
-    stroke: #FF8300;
+    stroke: #2EA043;
     fill: none;
     stroke-width: 6;
     opacity: 0.2;
     }
 
     .rank-circle {
-    stroke: #FF8300;
+    stroke: #2EA043;
     stroke-dasharray: 251.327;
     fill: none;
     stroke-width: 6;

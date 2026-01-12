@@ -2,18 +2,18 @@ from math import tau
 from pathlib import Path
 from typing import Iterable
 
-from src.config import USERNAME
+from src.config import GH_USERNAME
 from src.stats import GitHubStats
 from src.render_template import render_template
 
 
 PALETTE = [
-    "#3572A5",  # blue
-    "#f1e05a",  # yellow
-    "#555555",  # charcoal
-    "#b07219",  # brown
-    "#89e051",  # green
-    "#e34c26",  # orange-red
+    "#2EA043",  # github green
+    "#1F6FEB",  # indigo
+    "#A371F7",  # purple
+    "#3FB950",  # mint green
+    "#F778BA",  # pink accent
+    "#54AEFF",  # sky blue
 ]
 
 
@@ -139,7 +139,7 @@ def main() -> None:
     dark_out, light_out = generate_github_languages_cards(
         templates_dir=templates_dir,
         output_dir=output_dir,
-        username=USERNAME,
+        username=GH_USERNAME,
     )
 
     print(f"Wrote {dark_out}")
