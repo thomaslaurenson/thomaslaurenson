@@ -10,7 +10,7 @@ jobs:
     permissions:
       contents: write
     env:
-      GH_USERNAME: "${{ secrets.USERNAME }}"
+      GH_USERNAME: "${{ secrets.GH_USERNAME }}"
       GH_TOKEN: "${{ secrets.GH_TOKEN }}"
 
     steps:
