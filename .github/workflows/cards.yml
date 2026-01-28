@@ -2,7 +2,7 @@ name: Generate Cards
 
 on:
   schedule:
-    - cron: "30 20 * * *"  # Runs daily at 20:30 UTC/7.30 NZT
+    - cron: "30 23 * * *"
 
 jobs:
   generate-cards:
