@@ -38,7 +38,7 @@
         <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#FEFEFE' stroke='none'
           font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='28px'
           font-style='normal' style='opacity: 0; animation: fadein 0.5s linear forwards 0.6s'>
-          4,574
+          4,576
         </text>
       </g>
 
@@ -56,7 +56,7 @@
         <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#9E9E9E' stroke='none'
           font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='12px'
           font-style='normal' style='opacity: 0; animation: fadein 0.5s linear forwards 0.8s'>
-          Jan 1, 2013 - Feb 14, 2026
+          Jan 1, 2013 - Feb 15, 2026
         </text>
       </g>
     </g>
@@ -75,7 +75,7 @@
         <text x='0' y='21' stroke-width='0' text-anchor='middle' fill='#9E9E9E' stroke='none'
           font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='400' font-size='12px'
           font-style='normal' style='opacity: 0; animation: fadein 0.5s linear forwards 0.9s'>
-          Feb 8 - Feb 14, 2026
+          Feb 8 - Feb 15, 2026
         </text>
       </g>
 
@@ -98,7 +98,7 @@
         <text x='0' y='32' stroke-width='0' text-anchor='middle' fill='#FEFEFE' stroke='none'
           font-family='"Segoe UI", Ubuntu, sans-serif' font-weight='700' font-size='28px'
           font-style='normal' style='animation: currstreak 0.6s linear forwards'>
-          7
+          8
         </text>
       </g>
 
