@@ -9,7 +9,7 @@
 >
   <title id="titleId">Thomas Laurenson's GitHub Stats, Rank: A</title>
   <desc id="descId">Total Stars Earned: 97, Total Commits (last year):
-    916, Total PRs: 277, Total Issues: 459, Contributed to
+    902, Total PRs: 277, Total Issues: 459, Contributed to
     (last year): 50</desc>
   <style>
     .header {
@@ -171,7 +171,7 @@
             x="219.01"
             y="12.5"
             data-testid="commits"
-          >916</text>
+          >902</text>
         </g>
       </g>
       <g transform="translate(0, 50)">
