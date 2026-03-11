@@ -9,7 +9,7 @@
 >
   <title id="titleId">Thomas Laurenson's GitHub Stats, Rank: A</title>
   <desc id="descId">Total Stars Earned: 97, Total Commits (last year):
-    905, Total PRs: 278, Total Issues: 465, Contributed to
+    900, Total PRs: 279, Total Issues: 467, Contributed to
     (last year): 50</desc>
   <style>
     .header {
@@ -127,7 +127,7 @@
     <g data-testid="rank-circle"
       transform="translate(390.5, 47.5)">
       <circle class="rank-circle-rim" cx="-10" cy="8" r="40" />
-      <circle class="rank-circle" cx="-10" cy="8" r="40" stroke-dashoffset="35.297" />
+      <circle class="rank-circle" cx="-10" cy="8" r="40" stroke-dashoffset="35.274" />
       <g class="rank-text">
 
         <text x="-5" y="3" alignment-baseline="central" dominant-baseline="central"
@@ -171,7 +171,7 @@
             x="219.01"
             y="12.5"
             data-testid="commits"
-          >905</text>
+          >900</text>
         </g>
       </g>
       <g transform="translate(0, 50)">
@@ -189,7 +189,7 @@
             x="219.01"
             y="12.5"
             data-testid="prs"
-          >278</text>
+          >279</text>
         </g>
       </g>
       <g transform="translate(0, 75)">
@@ -207,7 +207,7 @@
             x="219.01"
             y="12.5"
             data-testid="issues"
-          >465</text>
+          >467</text>
         </g>
       </g>
       <g transform="translate(0, 100)">
