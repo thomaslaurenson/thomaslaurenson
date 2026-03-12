@@ -120,7 +120,7 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#2EA043" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        Python (50.29%)
+        Python (49.92%)
       </text>
     </g>
   </g>
@@ -128,7 +128,7 @@
     <g class="stagger" style="animation-delay: 570ms">
       <circle cx="5" cy="6" r="5" fill="#1F6FEB" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        C (18.13%)
+        C (17.99%)
       </text>
     </g>
   </g>
@@ -136,7 +136,7 @@
     <g class="stagger" style="animation-delay: 690ms">
       <circle cx="5" cy="6" r="5" fill="#A371F7" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        JavaScript (16.00%)
+        JavaScript (15.88%)
       </text>
     </g>
   </g>
@@ -144,7 +144,7 @@
     <g class="stagger" style="animation-delay: 810ms">
       <circle cx="5" cy="6" r="5" fill="#3FB950" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        Java (6.15%)
+        Shell (6.47%)
       </text>
     </g>
   </g>
@@ -152,7 +152,7 @@
     <g class="stagger" style="animation-delay: 930ms">
       <circle cx="5" cy="6" r="5" fill="#F778BA" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        Shell (5.77%)
+        Java (6.11%)
       </text>
     </g>
   </g>
@@ -160,7 +160,7 @@
     <g class="stagger" style="animation-delay: 1050ms">
       <circle cx="5" cy="6" r="5" fill="#54AEFF" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        PowerShell (3.66%)
+        PowerShell (3.63%)
       </text>
     </g>
   </g>
@@ -171,14 +171,14 @@
         <g class="stagger" style="animation-delay: 600ms">
         <circle
           data-testid="lang-donut"
-          size="50.29"
+          size="49.92"
           cx="116.6667"
           cy="116.6667"
           r="56.6667"
           stroke="#2EA043"
           fill="none"
           stroke-width="12"
-          stroke-dasharray="179.056 356.047"
+          stroke-dasharray="177.739 356.047"
           stroke-dashoffset="0"
           transform="rotate(-90.000 116.6667 116.6667)">
         </circle>
@@ -186,76 +186,76 @@
 <g class="stagger" style="animation-delay: 700ms">
         <circle
           data-testid="lang-donut"
-          size="18.13"
+          size="17.99"
           cx="116.6667"
           cy="116.6667"
           r="56.6667"
           stroke="#1F6FEB"
           fill="none"
           stroke-width="12"
-          stroke-dasharray="64.551 356.047"
+          stroke-dasharray="64.053 356.047"
           stroke-dashoffset="0"
-          transform="rotate(91.044 116.6667 116.6667)">
+          transform="rotate(89.712 116.6667 116.6667)">
         </circle>
       </g>
 <g class="stagger" style="animation-delay: 800ms">
         <circle
           data-testid="lang-donut"
-          size="16.00"
+          size="15.88"
           cx="116.6667"
           cy="116.6667"
           r="56.6667"
           stroke="#A371F7"
           fill="none"
           stroke-width="12"
-          stroke-dasharray="56.968 356.047"
+          stroke-dasharray="56.540 356.047"
           stroke-dashoffset="0"
-          transform="rotate(156.312 116.6667 116.6667)">
+          transform="rotate(154.476 116.6667 116.6667)">
         </circle>
       </g>
 <g class="stagger" style="animation-delay: 900ms">
         <circle
           data-testid="lang-donut"
-          size="6.15"
+          size="6.47"
           cx="116.6667"
           cy="116.6667"
           r="56.6667"
           stroke="#3FB950"
           fill="none"
           stroke-width="12"
-          stroke-dasharray="21.897 356.047"
+          stroke-dasharray="23.036 356.047"
           stroke-dashoffset="0"
-          transform="rotate(213.912 116.6667 116.6667)">
+          transform="rotate(211.644 116.6667 116.6667)">
         </circle>
       </g>
 <g class="stagger" style="animation-delay: 1000ms">
         <circle
           data-testid="lang-donut"
-          size="5.77"
+          size="6.11"
           cx="116.6667"
           cy="116.6667"
           r="56.6667"
           stroke="#F778BA"
           fill="none"
           stroke-width="12"
-          stroke-dasharray="20.544 356.047"
+          stroke-dasharray="21.754 356.047"
           stroke-dashoffset="0"
-          transform="rotate(236.052 116.6667 116.6667)">
+          transform="rotate(234.936 116.6667 116.6667)">
         </circle>
       </g>
 <g class="stagger" style="animation-delay: 1100ms">
         <circle
           data-testid="lang-donut"
-          size="3.66"
+          size="3.63"
           cx="116.6667"
           cy="116.6667"
           r="56.6667"
           stroke="#54AEFF"
           fill="none"
           stroke-width="12"
-          stroke-dasharray="13.031 356.047"
+          stroke-dasharray="12.925 356.047"
           stroke-dashoffset="0"
-          transform="rotate(256.824 116.6667 116.6667)">
+          transform="rotate(256.932 116.6667 116.6667)">
         </circle>
       </g>
       </svg>
