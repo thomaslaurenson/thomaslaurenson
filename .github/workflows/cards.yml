@@ -12,6 +12,7 @@ jobs:
     env:
       GH_USERNAME: "${{ secrets.GH_USERNAME }}"
       GH_TOKEN: "${{ secrets.GH_TOKEN }}"
+      GH_ORGS: "${{ secrets.GH_ORGS }}"
 
     steps:
       - uses: actions/checkout@v6

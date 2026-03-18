@@ -2,10 +2,13 @@ from datetime import datetime, timezone, timedelta, date
 from collections import defaultdict
 from math import pow
 
+from src.config import GH_ORGS
 from src.github_client import GitHubClient
 from src.graphql_queries import (
     TOTAL_STARS_QUERY,
+    ORG_STARS_QUERY,
     USER_LANGUAGES_QUERY,
+    ORG_LANGUAGES_QUERY,
     FOLLOWERS_COUNT_QUERY,
     SEARCH_ISSUE_COUNT_QUERY,
     SEARCH_REVIEW_COUNT_QUERY,
@@ -32,6 +35,15 @@ class GitHubStats:
             total_stars += sum(repo['stargazerCount'] for repo in repos)
 
         self.client.paginated_query(TOTAL_STARS_QUERY, self.username, process_stars)
+
+        def process_org_stars(result):
+            nonlocal total_stars
+            repos = result['data']['organization']['repositories']['nodes']
+            total_stars += sum(repo['stargazerCount'] for repo in repos)
+
+        for org in GH_ORGS:
+            self.client.paginated_org_query(ORG_STARS_QUERY, org, process_org_stars)
+
         return total_stars
 
     def get_commits_last_year(self):
@@ -125,6 +137,18 @@ class GitHubStats:
                     language_bytes[name] += edge['size']
 
         self.client.paginated_query(USER_LANGUAGES_QUERY, self.username, process_languages)
+
+        def process_org_languages(result):
+            repos = result['data']['organization']['repositories']['nodes']
+            for repo in repos:
+                for edge in repo['languages']['edges']:
+                    name = edge['node']['name']
+                    if name in exclude:
+                        continue
+                    language_bytes[name] += edge['size']
+
+        for org in GH_ORGS:
+            self.client.paginated_org_query(ORG_LANGUAGES_QUERY, org, process_org_languages)
 
         total_bytes = sum(language_bytes.values())
         if total_bytes == 0:

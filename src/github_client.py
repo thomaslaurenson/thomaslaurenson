@@ -42,8 +42,28 @@ class GitHubClient:
             has_next_page = page_info.get('hasNextPage', False)
             cursor = page_info.get('endCursor')
 
+    def paginated_org_query(self, query_string, org, process_fn):
+        cursor = None
+        has_next_page = True
+
+        while has_next_page:
+            variables = {'org': org, 'cursor': cursor}
+            result = self.query(query_string, variables)
+
+            process_fn(result)
+
+            page_info = self._extract_org_page_info(result)
+            has_next_page = page_info.get('hasNextPage', False)
+            cursor = page_info.get('endCursor')
+
     def _extract_page_info(self, result):
         try:
             return result['data']['user']['repositories']['pageInfo']
+        except (KeyError, TypeError):
+            return {}
+
+    def _extract_org_page_info(self, result):
+        try:
+            return result['data']['organization']['repositories']['pageInfo']
         except (KeyError, TypeError):
             return {}

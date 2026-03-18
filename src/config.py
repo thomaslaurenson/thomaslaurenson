@@ -5,6 +5,7 @@ load_dotenv()
 
 GH_TOKEN = os.getenv('GH_TOKEN')
 GH_USERNAME = os.getenv('GH_USERNAME')
+GH_ORGS = [o.strip() for o in os.getenv('GH_ORGS', 'thegraydot').split(',') if o.strip()]
 API_URL = 'https://api.github.com/graphql'
 
 if not GH_TOKEN:

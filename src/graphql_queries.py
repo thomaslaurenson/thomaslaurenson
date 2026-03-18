@@ -134,3 +134,42 @@ query($query: String!) {
   }
 }
 """
+
+ORG_STARS_QUERY = """
+query($org: String!, $cursor: String) {
+  organization(login: $org) {
+    repositories(first: 100, after: $cursor, ownerAffiliations: OWNER) {
+      nodes {
+        stargazerCount
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+}
+"""
+
+ORG_LANGUAGES_QUERY = """
+query($org: String!, $cursor: String) {
+  organization(login: $org) {
+    repositories(first: 100, after: $cursor, ownerAffiliations: OWNER, isFork: false) {
+      nodes {
+        languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+          edges {
+            size
+            node {
+              name
+            }
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+}
+"""
