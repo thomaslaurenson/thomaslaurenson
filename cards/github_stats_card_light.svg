@@ -8,9 +8,9 @@
   aria-labelledby="descId"
 >
   <title id="titleId">Thomas Laurenson's GitHub Stats, Rank: A</title>
-  <desc id="descId">Total Stars Earned: 97, Total Commits (last year):
-    902, Total PRs: 283, Total Issues: 455, Contributed to
-    (last year): 51</desc>
+  <desc id="descId">Total Stars Earned: 114, Total Commits (last year):
+    899, Total PRs: 284, Total Issues: 456, Contributed to
+    (last year): 53</desc>
   <style>
     .header {
     font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -127,7 +127,7 @@
     <g data-testid="rank-circle"
       transform="translate(390.5, 47.5)">
       <circle class="rank-circle-rim" cx="-10" cy="8" r="40" />
-      <circle class="rank-circle" cx="-10" cy="8" r="40" stroke-dashoffset="35.243" />
+      <circle class="rank-circle" cx="-10" cy="8" r="40" stroke-dashoffset="32.267" />
       <g class="rank-text">
 
         <text x="-5" y="3" alignment-baseline="central" dominant-baseline="central"
@@ -153,7 +153,7 @@
             x="219.01"
             y="12.5"
             data-testid="stars"
-          >97</text>
+          >114</text>
         </g>
       </g>
       <g transform="translate(0, 25)">
@@ -171,7 +171,7 @@
             x="219.01"
             y="12.5"
             data-testid="commits"
-          >902</text>
+          >899</text>
         </g>
       </g>
       <g transform="translate(0, 50)">
@@ -189,7 +189,7 @@
             x="219.01"
             y="12.5"
             data-testid="prs"
-          >283</text>
+          >284</text>
         </g>
       </g>
       <g transform="translate(0, 75)">
@@ -207,7 +207,7 @@
             x="219.01"
             y="12.5"
             data-testid="issues"
-          >455</text>
+          >456</text>
         </g>
       </g>
       <g transform="translate(0, 100)">
@@ -225,7 +225,7 @@
             x="219.01"
             y="12.5"
             data-testid="contribs"
-          >51</text>
+          >53</text>
         </g>
       </g>
     </svg>
