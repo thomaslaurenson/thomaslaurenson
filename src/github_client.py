@@ -1,6 +1,8 @@
 import requests
 from src.config import GH_TOKEN, API_URL
 
+REST_API_URL = 'https://api.github.com'
+
 
 class GitHubClient:
 
@@ -9,6 +11,18 @@ class GitHubClient:
             'Authorization': f'Bearer {GH_TOKEN}',
             'Content-Type': 'application/json',
         }
+
+    def get_rest(self, path: str, params: dict | None = None) -> dict | list:
+        """Call a GitHub REST API endpoint and return parsed JSON.
+
+        Args:
+            path: Path relative to https://api.github.com, e.g. '/users/foo/events'
+            params: Optional query parameters.
+        """
+        url = f"{REST_API_URL}{path}"
+        response = requests.get(url, headers=self.headers, params=params)
+        response.raise_for_status()
+        return response.json()
 
     def query(self, query_string, variables=None):
         payload = {'query': query_string}
