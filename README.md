@@ -1,21 +1,49 @@
 <h1 align="center">Hi 👋 I'm Thomas</h1>
 <h3 align="center">A passionate security researcher/engineer and a major geek from New Zealand</h3>
 
-:penguin: Brief intro on my [personal website](https://www.thomaslaurenson.com)
+<!-- Badge Row 1: website + email -->
+<p align="center">
+  <a href="https://www.thomaslaurenson.com">
+    <img src="badges/badge_website_dark.svg#gh-dark-mode-only" alt="website" />
+    <img src="badges/badge_website_light.svg#gh-light-mode-only" alt="website" />
+  </a>
+  &nbsp;
+  <a href="mailto:thomas@thomaslaurenson.com">
+    <img src="badges/badge_email_dark.svg#gh-dark-mode-only" alt="email" />
+    <img src="badges/badge_email_light.svg#gh-light-mode-only" alt="email" />
+  </a>
+</p>
 
-:email: Reach me via [email](thomas@thomaslaurenson.com)
+<!-- Badge Row 2: github personal + github thegraydot -->
+<p align="center">
+  <a href="https://github.com/thomaslaurenson">
+    <img src="badges/badge_github_personal_dark.svg#gh-dark-mode-only" alt="github" />
+    <img src="badges/badge_github_personal_light.svg#gh-light-mode-only" alt="github" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/thegraydot">
+    <img src="badges/badge_github_thegraydot_dark.svg#gh-dark-mode-only" alt="thegraydot" />
+    <img src="badges/badge_github_thegraydot_light.svg#gh-light-mode-only" alt="thegraydot" />
+  </a>
+</p>
 
-:link: Connect with me on [LinkedIn](https://www.linkedin.com/in/thomaslaurenson/)
+<!-- Badge Row 3: linkedin + work -->
+<p align="center">
+  <a href="https://www.linkedin.com/in/thomaslaurenson/">
+    <img src="badges/badge_linkedin_dark.svg#gh-dark-mode-only" alt="linkedin" />
+    <img src="badges/badge_linkedin_light.svg#gh-light-mode-only" alt="linkedin" />
+  </a>
+  &nbsp;
+  <a href="https://www.auckland.ac.nz">
+    <img src="badges/badge_work_dark.svg#gh-dark-mode-only" alt="work" />
+    <img src="badges/badge_work_light.svg#gh-light-mode-only" alt="work" />
+  </a>
+</p>
 
-:telescope: See my hobby projects on [The Gray Dot](https://github.com/thegraydot)
-
-:construction: I am currently...
-
-- :seedling: Focussing on improving my **C++** skills
-
-- :video_game: Developing tools for **WoW Vanilla, TBC and WoTLK**
-
-- :boom: Writing **comic book-releated software**
+<!-- Profile views counter (dynamic — external service) -->
+<!-- <p align="center">
+  <img src="https://komarev.com/ghpvc/?username=thomaslaurenson&label=Profile+views&style=flat" alt="profile views" />
+</p> -->
 
 <div align="center">
   <picture>
@@ -33,12 +61,14 @@
 
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="cards/github_languages_card_dark.svg">
-    <img alt="Thomas Laurenson's GitHub Top Languages" src="cards/github_languages_card_light.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="cards/github_plan_card_dark.svg">
+    <img alt="thomaslaurenson's plan" src="cards/github_plan_card_light.svg">
   </picture>
 </div>
 
-<div align="center" style="padding-top: 15px;">
-  <img src="https://komarev.com/ghpvc/?username=thomaslaurenson&label=Profile%20views&color=0e75b6&style=flat" alt="Thomas Laurenson's GitHub profile view count" />
-  <img src="https://user-badge.committers.top/new_zealand/thomaslaurenson.svg" alt="Thomas Laurenson's Top NZ Committers Rank" />
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="cards/github_activity_card_dark.svg">
+    <img alt="Thomas Laurenson's GitHub Activity Feed" src="cards/github_activity_card_light.svg">
+  </picture>
 </div>
