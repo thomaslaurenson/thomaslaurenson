@@ -1,18 +1,18 @@
-name: Generate Cards
+name: Update Activity Card Hourly
 
 on:
   schedule:
-    - cron: "30 23 * * *"
+    - cron: "45 */6 * * *"
+  workflow_dispatch:
 
 jobs:
-  generate-cards:
+  generate-activity-card:
     runs-on: ubuntu-24.04
     permissions:
       contents: write
     env:
       GH_USERNAME: "${{ secrets.GH_USERNAME }}"
       GH_TOKEN: "${{ secrets.GH_TOKEN }}"
-      GH_ORGS: "${{ secrets.GH_ORGS }}"
 
     steps:
       - uses: actions/checkout@v6
@@ -28,11 +28,8 @@ jobs:
       - name: Install project dependencies
         run: uv sync
 
-      - name: Generate cards
-        run: |
-          uv run python -m src.github_stats_card
-          uv run python -m src.github_languages_card
-          uv run python -m src.github_streak_card
+      - name: Generate activity card
+        run: uv run python -m src.github_activity_card
 
       - name: Get current date
         run: |
@@ -45,6 +42,6 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git add ./cards/*
-          git commit -m "Generated new cards ($DATE)"
-          git push || echo "Nothing to commit"
+          git add ./cards/github_activity_card_dark.svg ./cards/github_activity_card_light.svg
+          git commit -m "Update activity card ($DATE)" || echo "Nothing to commit"
+          git push
