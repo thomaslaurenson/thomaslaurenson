@@ -4,39 +4,51 @@
 <!-- Badge Row 1: website + email -->
 <p align="center">
   <a href="https://www.thomaslaurenson.com">
-    <img src="badges/badge_website_dark.svg#gh-dark-mode-only" alt="website" />
-    <img src="badges/badge_website_light.svg#gh-light-mode-only" alt="website" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="badges/badge_website_dark.svg">
+      <img src="badges/badge_website_light.svg" alt="website" />
+    </picture>
   </a>
   &nbsp;
   <a href="mailto:thomas@thomaslaurenson.com">
-    <img src="badges/badge_email_dark.svg#gh-dark-mode-only" alt="email" />
-    <img src="badges/badge_email_light.svg#gh-light-mode-only" alt="email" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="badges/badge_email_dark.svg">
+      <img src="badges/badge_email_light.svg" alt="email" />
+    </picture>
   </a>
 </p>
 
 <!-- Badge Row 2: github personal + github thegraydot -->
 <p align="center">
   <a href="https://github.com/thomaslaurenson">
-    <img src="badges/badge_github_personal_dark.svg#gh-dark-mode-only" alt="github" />
-    <img src="badges/badge_github_personal_light.svg#gh-light-mode-only" alt="github" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="badges/badge_github_personal_dark.svg">
+      <img src="badges/badge_github_personal_light.svg" alt="github" />
+    </picture>
   </a>
   &nbsp;
   <a href="https://github.com/thegraydot">
-    <img src="badges/badge_github_thegraydot_dark.svg#gh-dark-mode-only" alt="thegraydot" />
-    <img src="badges/badge_github_thegraydot_light.svg#gh-light-mode-only" alt="thegraydot" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="badges/badge_github_thegraydot_dark.svg">
+      <img src="badges/badge_github_thegraydot_light.svg" alt="thegraydot" />
+    </picture>
   </a>
 </p>
 
 <!-- Badge Row 3: linkedin + work -->
 <p align="center">
   <a href="https://www.linkedin.com/in/thomaslaurenson/">
-    <img src="badges/badge_linkedin_dark.svg#gh-dark-mode-only" alt="linkedin" />
-    <img src="badges/badge_linkedin_light.svg#gh-light-mode-only" alt="linkedin" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="badges/badge_linkedin_dark.svg">
+      <img src="badges/badge_linkedin_light.svg" alt="linkedin" />
+    </picture>
   </a>
   &nbsp;
   <a href="https://www.auckland.ac.nz">
-    <img src="badges/badge_work_dark.svg#gh-dark-mode-only" alt="work" />
-    <img src="badges/badge_work_light.svg#gh-light-mode-only" alt="work" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="badges/badge_work_dark.svg">
+      <img src="badges/badge_work_light.svg" alt="work" />
+    </picture>
   </a>
 </p>
 
