@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 220" width="650px" height="220px" role="img" aria-label="thomaslaurenson's plan">
+  <style>
+    .prompt {
+      font: 400 11px 'Courier New', Courier, monospace;
+      fill: #557755;
+    }
+
+    .keyword {
+      font: 700 11px 'Courier New', Courier, monospace;
+      fill: #39ff14;
+    }
+
+    .content {
+      font: 400 11px 'Courier New', Courier, monospace;
+      fill: #c8e6c8;
+    }
+
+    .stagger {
+      opacity: 0;
+      animation: fadein 0.4s ease-in-out forwards;
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+  <defs>
+    <clipPath id="outer_rect">
+      <rect width="650" height="220" rx="4.5" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#outer_rect)">
+    <rect fill="none" rx="4.5" x="0.5" y="0.5" width="649" height="219" />
+    <!-- Terminal prompt header -->
+    <text x="12" y="18" class="prompt">thomaslaurenson@github:~$ cat ~/.plan</text>
+    <!-- Plan lines injected by Python -->
+    <g transform="translate(12, 44)">
+      {{PLAN_LINES}}
+    </g>
+  </g>
+</svg>

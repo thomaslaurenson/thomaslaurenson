@@ -1,8 +1,11 @@
+import logging
 from pathlib import Path
 
 from src.config import GH_USERNAME
 from src.render_template import render_template
 from src.stats import GitHubStats
+
+logger = logging.getLogger(__name__)
 
 
 def generate_github_streak_cards(
@@ -11,12 +14,19 @@ def generate_github_streak_cards(
     output_dir: Path,
     username: str,
 ) -> tuple[Path, Path]:
+    logger.info("generating streak card for %s", username)
     stats = GitHubStats(username)
     streak = stats.get_streak_stats()
+    first_year, first_full = stats.get_first_contribution_date()
+    logger.info(
+        "streak: current=%d (%s), longest=%d (%s)",
+        streak["current_streak"], streak["current_range"],
+        streak["longest_streak"], streak["longest_range"],
+    )
 
     values = {
-        "TOTAL_CONTRIBUTIONS": f"{streak['total_contributions']:,}",
-        "TOTAL_CONTRIB_RANGE": streak.get("total_range", "-"),
+        "FIRST_CONTRIBUTION_YEAR": first_year,
+        "FIRST_CONTRIBUTION_FULL": first_full,
         "CURRENT_STREAK": str(streak["current_streak"]),
         "CURRENT_STREAK_RANGE": streak["current_range"],
         "LONGEST_STREAK": str(streak["longest_streak"]),
@@ -35,6 +45,8 @@ def generate_github_streak_cards(
     light_out = output_dir / "github_streak_card_light.svg"
     dark_out.write_text(dark_svg, encoding="utf-8")
     light_out.write_text(light_svg, encoding="utf-8")
+    logger.info("wrote %s", dark_out)
+    logger.info("wrote %s", light_out)
 
     return dark_out, light_out
 
@@ -44,14 +56,11 @@ def main() -> None:
     templates_dir = repo_root / "templates"
     output_dir = repo_root / "cards"
 
-    dark_out, light_out = generate_github_streak_cards(
+    generate_github_streak_cards(
         templates_dir=templates_dir,
         output_dir=output_dir,
         username=GH_USERNAME,
     )
-
-    print(f"Wrote {dark_out}")
-    print(f"Wrote {light_out}")
 
 
 if __name__ == "__main__":

@@ -1,9 +1,12 @@
-from pathlib import Path
+import logging
 from math import tau
+from pathlib import Path
 
 from src.config import GH_USERNAME
 from src.render_template import render_template
 from src.stats import GitHubStats, calculate_rank
+
+logger = logging.getLogger(__name__)
 
 
 def generate_github_stats_cards(
@@ -12,15 +15,14 @@ def generate_github_stats_cards(
     output_dir: Path,
     username: str,
 ) -> tuple[Path, Path]:
+    logger.info("generating stats card for %s", username)
     stats = GitHubStats(username)
 
     display_name = stats.get_display_name()
     total_stars = stats.get_total_stars()
-    commits_last_year = stats.get_commits_last_year()
     commits_all_time = stats.get_commits_all_time()
     total_prs = stats.get_total_pull_requests_created()
     total_issues = stats.get_total_issues_created()
-    repos_contributed_last_year = stats.get_repos_contributed_last_year()
     followers = stats.get_followers_count()
     reviews = stats.get_total_reviews_created()
 
@@ -33,6 +35,10 @@ def generate_github_stats_cards(
         stars=total_stars,
         followers=followers,
     )
+    logger.info(
+        "stats: stars=%d, commits=%d, prs=%d, issues=%d, reviews=%d, followers=%d, rank=%s",
+        total_stars, commits_all_time, total_prs, total_issues, reviews, followers, level,
+    )
 
     # Circle progress shows 100 - percentile; dashoffset is proportional to percentile
     circumference = tau * 40  # radius 40
@@ -43,10 +49,10 @@ def generate_github_stats_cards(
         "RANK": level,
         "RANK_DASHOFFSET": f"{rank_dashoffset:.3f}",
         "TOTAL_STARS": str(total_stars),
-        "COMMITS_LAST_YEAR": str(commits_last_year),
+        "COMMITS_ALL_TIME": str(commits_all_time),
         "TOTAL_PRS": str(total_prs),
+        "TOTAL_REVIEWS": str(reviews),
         "TOTAL_ISSUES": str(total_issues),
-        "REPOS_CONTRIBUTED_LAST_YEAR": str(repos_contributed_last_year),
     }
 
     dark_template = (templates_dir / "github_stats_card_dark.svg").read_text(encoding="utf-8")
@@ -61,6 +67,8 @@ def generate_github_stats_cards(
     light_out = output_dir / "github_stats_card_light.svg"
     dark_out.write_text(dark_svg, encoding="utf-8")
     light_out.write_text(light_svg, encoding="utf-8")
+    logger.info("wrote %s", dark_out)
+    logger.info("wrote %s", light_out)
 
     return dark_out, light_out
 
@@ -70,14 +78,11 @@ def main() -> None:
     templates_dir = repo_root / "templates"
     output_dir = repo_root / "cards"
 
-    dark_out, light_out = generate_github_stats_cards(
+    generate_github_stats_cards(
         templates_dir=templates_dir,
         output_dir=output_dir,
         username=GH_USERNAME,
     )
-
-    print(f"Wrote {dark_out}")
-    print(f"Wrote {light_out}")
 
 
 if __name__ == "__main__":

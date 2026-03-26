@@ -1,0 +1,52 @@
+name: Update Cards Daily
+
+on:
+  schedule:
+    - cron: "45 6 * * *"
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  generate-cards:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    env:
+      GH_USERNAME: "${{ secrets.GH_USERNAME }}"
+      GH_TOKEN: "${{ secrets.GH_TOKEN }}"
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install uv
+        run: pip install --upgrade uv
+
+      - name: Install project dependencies
+        run: uv sync
+
+      - name: Generate cards
+        run: |
+          uv run python -m src.github_stats_card
+          uv run python -m src.github_streak_card
+
+      - name: Get current date
+        run: |
+          echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Configure git user
+        run: |
+          git config user.name "cards-bot"
+          git config user.email "cards-bot@users.noreply.github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add ./cards/*
+          git commit -m "Generated new cards ($DATE)" || echo "Nothing to commit"
+          git push

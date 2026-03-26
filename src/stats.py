@@ -1,23 +1,26 @@
-from datetime import datetime, timezone, timedelta, date
+import logging
 from collections import defaultdict
+from datetime import date, datetime, timedelta, timezone
 from math import pow
 
-from src.config import GH_ORGS
+from src.config import LANGUAGES_ORGS, STARS_ORGS
 from src.github_client import GitHubClient
 from src.graphql_queries import (
-    TOTAL_STARS_QUERY,
-    ORG_STARS_QUERY,
-    USER_LANGUAGES_QUERY,
-    ORG_LANGUAGES_QUERY,
+    ALL_TIME_CONTRIBUTIONS_QUERY,
     FOLLOWERS_COUNT_QUERY,
+    ORG_LANGUAGES_QUERY,
+    ORG_STARS_QUERY,
     SEARCH_ISSUE_COUNT_QUERY,
     SEARCH_REVIEW_COUNT_QUERY,
+    STREAK_CALENDAR_QUERY,
+    TOTAL_STARS_QUERY,
+    USER_LANGUAGES_QUERY,
     USER_PROFILE_QUERY,
-    ALL_TIME_CONTRIBUTIONS_QUERY,
     YEAR_CONTRIBUTIONS_QUERY,
     YEAR_CONTRIBUTIONS_SUMMARY_QUERY,
-    STREAK_CALENDAR_QUERY,
 )
+
+logger = logging.getLogger(__name__)
 
 
 class GitHubStats:
@@ -41,9 +44,10 @@ class GitHubStats:
             repos = result['data']['organization']['repositories']['nodes']
             total_stars += sum(repo['stargazerCount'] for repo in repos)
 
-        for org in GH_ORGS:
+        for org in STARS_ORGS:
             self.client.paginated_org_query(ORG_STARS_QUERY, org, process_org_stars)
 
+        logger.info("total stars: %d (user + %d orgs)", total_stars, len(STARS_ORGS))
         return total_stars
 
     def get_commits_last_year(self):
@@ -79,6 +83,7 @@ class GitHubStats:
             contributions = result['data']['user']['contributionsCollection']
             total_commits += contributions['contributionCalendar']['totalContributions']
 
+        logger.info("commits all time: %d across %d years", total_commits, len(years))
         return total_commits
 
     def get_total_issues_created(self):
@@ -147,7 +152,7 @@ class GitHubStats:
                         continue
                     language_bytes[name] += edge['size']
 
-        for org in GH_ORGS:
+        for org in LANGUAGES_ORGS:
             self.client.paginated_org_query(ORG_LANGUAGES_QUERY, org, process_org_languages)
 
         total_bytes = sum(language_bytes.values())
@@ -169,7 +174,28 @@ class GitHubStats:
                 'bytes': bytes_count,
             })
 
+        logger.info(
+            "top languages: %s",
+            ", ".join(f"{lang['language']} {lang['percentage']}%" for lang in top_languages),
+        )
         return top_languages
+
+    def get_first_contribution_date(self) -> tuple[str, str]:
+        years_resp = self.client.query(ALL_TIME_CONTRIBUTIONS_QUERY, {'username': self.username})
+        years = sorted(years_resp['data']['user']['contributionsCollection']['contributionYears'])
+        if not years:
+            return ("–", "–")
+
+        for year in years:
+            start_dt = datetime(year, 1, 1, tzinfo=timezone.utc)
+            end_dt = datetime(year, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
+            days = self._fetch_calendar_days(start_dt, end_dt)
+            first = next((d for d, count in sorted(days) if count > 0), None)
+            if first:
+                logger.info("first contribution: %s", first.isoformat())
+                return (str(first.year), first.strftime("%b %-d, %Y"))
+
+        return ("–", "–")
 
     def get_total_contributions(self):
         return self.get_commits_all_time()
@@ -188,8 +214,7 @@ class GitHubStats:
                 days_list.append((date.fromisoformat(d["date"]), d["contributionCount"]))
         return days_list
 
-    def get_streak_stats(self):
-        """Compute current and longest streaks using all available contribution history."""
+    def get_streak_stats(self) -> dict:
         # Determine all contribution years
         years_resp = self.client.query(ALL_TIME_CONTRIBUTIONS_QUERY, {'username': self.username})
         years = years_resp['data']['user']['contributionsCollection']['contributionYears']
