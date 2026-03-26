@@ -51,22 +51,22 @@
     <!-- Log lines injected by Python (_build_log_lines_svg) -->
     <g transform="translate(12, 44)">
         <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
-    <text x="0"   y="0" class="log-time">[1m ago]</text>
+    <text x="0"   y="0" class="log-time">[5h ago]</text>
     <text x="78"  y="0" class="log-repo">thomaslaurenson/thomaslaurenson</text>
     <text x="357" y="0" class="log-msg">Refactor/terminal theme cards (#18)</text>
   </g>
   <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
-    <text x="0"   y="0" class="log-time">[3m ago]</text>
+    <text x="0"   y="0" class="log-time">[5h ago]</text>
     <text x="78"  y="0" class="log-repo">thomaslaurenson/thomaslaurenson</text>
     <text x="357" y="0" class="log-msg">Fixed badges for light/dark mode</text>
   </g>
   <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
-    <text x="0"   y="0" class="log-time">[2h ago]</text>
+    <text x="0"   y="0" class="log-time">[8h ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-SRE/linux_images</text>
     <text x="357" y="0" class="log-msg">Feature/add iptables back (#10)</text>
   </g>
   <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
-    <text x="0"   y="0" class="log-time">[2h ago]</text>
+    <text x="0"   y="0" class="log-time">[8h ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-SRE/linux_images</text>
     <text x="357" y="0" class="log-msg">Removed old project VM files</text>
   </g>
