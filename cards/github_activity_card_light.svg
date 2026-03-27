@@ -51,32 +51,32 @@
     <!-- Log lines injected by Python (_build_log_lines_svg) -->
     <g transform="translate(12, 44)">
         <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
-    <text x="0"   y="0" class="log-time">[10h ago]</text>
+    <text x="0"   y="0" class="log-time">[16h ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-SRE/linux_images</text>
-    <text x="357" y="0" class="log-msg">Update/1.5.1 (#11)</text>
+    <text x="357" y="0" class="log-msg">(no message)</text>
   </g>
   <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
-    <text x="0"   y="0" class="log-time">[10h ago]</text>
+    <text x="0"   y="0" class="log-time">[16h ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-SRE/linux_images</text>
-    <text x="357" y="0" class="log-msg">Bumped version</text>
+    <text x="357" y="0" class="log-msg">(no message)</text>
   </g>
   <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
-    <text x="0"   y="0" class="log-time">[10h ago]</text>
+    <text x="0"   y="0" class="log-time">[16h ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-eResearch/narc</text>
     <text x="357" y="0" class="log-msg">Fixed permission error in release workflow</text>
   </g>
   <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
-    <text x="0"   y="0" class="log-time">[10h ago]</text>
+    <text x="0"   y="0" class="log-time">[16h ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-eResearch/narc</text>
     <text x="357" y="0" class="log-msg">Commented govulncheck to get release</text>
   </g>
   <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
-    <text x="0"   y="0" class="log-time">[12h ago]</text>
+    <text x="0"   y="0" class="log-time">[18h ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-SRE/ansible</text>
     <text x="357" y="0" class="log-msg">Refactor/cis update and fixes (#110)</text>
   </g>
   <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
-    <text x="0"   y="0" class="log-time">[12h ago]</text>
+    <text x="0"   y="0" class="log-time">[18h ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-SRE/ansible</text>
     <text x="357" y="0" class="log-msg">Updated CIS role</text>
   </g>
