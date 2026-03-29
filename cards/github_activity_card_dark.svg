@@ -56,22 +56,22 @@
     <text x="357" y="0" class="log-msg">Fixed permission error in release workflow</text>
   </g>
   <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-SRE/linux_images</text>
     <text x="357" y="0" class="log-msg">Update/1.5.1 (#11)</text>
   </g>
   <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-SRE/linux_images</text>
     <text x="357" y="0" class="log-msg">Bumped version</text>
   </g>
   <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-eResearch/narc</text>
     <text x="357" y="0" class="log-msg">Fixed permission error in release workflow</text>
   </g>
   <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-eResearch/narc</text>
     <text x="357" y="0" class="log-msg">Commented govulncheck to get release</text>
   </g>
