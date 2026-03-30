@@ -3,7 +3,7 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from math import pow
 
-from src.config import LANGUAGES_ORGS, STARS_ORGS
+from src.config import LANGUAGES_ORGS, LOCAL_TZ, STARS_ORGS
 from src.github_client import GitHubClient
 from src.graphql_queries import (
     ALL_TIME_CONTRIBUTIONS_QUERY,
@@ -230,10 +230,8 @@ class GitHubStats:
         days_list = []
         for year in years:
             start_dt = datetime(year, 1, 1, tzinfo=timezone.utc)
-            # Cap the end of the latest year to today
             if year == max(years):
-                today = datetime.now(timezone.utc)
-                end_dt = today
+                end_dt = datetime.now(LOCAL_TZ)
             else:
                 end_dt = datetime(year, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
             days_list.extend(self._fetch_calendar_days(start_dt, end_dt))
@@ -250,22 +248,36 @@ class GitHubStats:
 
         days_list.sort(key=lambda x: x[0])
 
+        # Weekends (Sat=5, Sun=6) are excluded: they neither count toward nor break streaks.
+        days_list = [(d, c) for d, c in days_list if d.weekday() < 5]
+
+        if not days_list:
+            return {
+                "total_contributions": 0,
+                "current_streak": 0,
+                "current_range": "-",
+                "longest_streak": 0,
+                "longest_range": "-",
+                "total_range": "-",
+            }
+
         total_contribs = sum(c for _, c in days_list)
         first_day = days_list[0][0]
         last_day = days_list[-1][0]
 
-        # Longest streak scan (forward)
+        # Longest streak scan (forward over weekday-only entries).
+        # After the weekend filter every consecutive pair in the list is a consecutive
+        # weekday, so a simple prev_has flag is sufficient — no day-gap check needed.
         longest_len = 0
         longest_start = None
         longest_end = None
         run_len = 0
         run_start = None
-        prev_day = None
         prev_has = False
         for d, count in days_list:
             has = count > 0
             if has:
-                if prev_day and prev_has and (d - prev_day).days == 1:
+                if prev_has:
                     run_len += 1
                 else:
                     run_len = 1
@@ -277,30 +289,38 @@ class GitHubStats:
             else:
                 run_len = 0
                 run_start = None
-            prev_day = d
             prev_has = has
 
-        # Current streak (from most recent backwards)
+        # Current streak (most-recent weekday backwards).
+        # Grace period: if "today UTC" has 0 contributions and is still a weekday in NZT,
+        # the user may not have committed yet today — skip ahead to the previous weekday.
+        today_nzt = datetime.now(LOCAL_TZ).date()
+        today_utc = datetime.now(timezone.utc).date()
+
         current_len = 0
         current_start = None
         current_end = None
-        last_day, last_count = days_list[-1]
-        if last_count > 0:
-            current_end = last_day
-            current_len = 1
-            for idx in range(len(days_list) - 2, -1, -1):
-                d, count = days_list[idx]
-                if count > 0 and (current_end - d).days == current_len:
-                    current_len += 1
-                    current_start = d
-                else:
-                    break
-            if current_start is None:
-                current_start = current_end
-        else:
-            current_len = 0
-            current_start = None
-            current_end = None
+        last_idx = len(days_list) - 1
+        last_day_entry, last_count = days_list[last_idx]
+
+        if (last_count == 0
+                and today_nzt.weekday() < 5
+                and last_day_entry == today_utc):
+            last_idx -= 1
+
+        if last_idx >= 0:
+            last_day_entry, last_count = days_list[last_idx]
+            if last_count > 0:
+                current_end = last_day_entry
+                current_len = 1
+                current_start = last_day_entry
+                for idx in range(last_idx - 1, -1, -1):
+                    d, count = days_list[idx]
+                    if count > 0:
+                        current_len += 1
+                        current_start = d
+                    else:
+                        break
 
         def fmt_range(start_d, end_d):
             if not start_d or not end_d:

@@ -1,5 +1,6 @@
 import logging
 import os
+from zoneinfo import ZoneInfo
 
 GH_TOKEN = os.getenv('GH_TOKEN')
 GH_USERNAME = os.getenv('GH_USERNAME')
@@ -30,3 +31,6 @@ ORG_CONFIG = [
 
 STARS_ORGS = [o["name"] for o in ORG_CONFIG if o["stars"]]
 LANGUAGES_ORGS = [o["name"] for o in ORG_CONFIG if o["languages"]]
+
+# Local timezone used for streak calculations (determines "today" and grace period).
+LOCAL_TZ = ZoneInfo("Pacific/Auckland")
