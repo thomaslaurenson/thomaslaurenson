@@ -3,9 +3,6 @@ name: Update Cards Daily
 on:
   schedule:
     - cron: "45 6 * * *"
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -35,6 +32,7 @@ jobs:
         run: |
           uv run python -m src.github_stats_card
           uv run python -m src.github_streak_card
+          uv run python -m src.github_activity_card
 
       - name: Get current date
         run: |
