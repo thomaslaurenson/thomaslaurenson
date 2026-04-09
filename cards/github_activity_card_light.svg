@@ -51,44 +51,44 @@
     <!-- Log lines injected by Python (_build_log_lines_svg) -->
     <g transform="translate(12, 44)">
         <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
-    <text x="0"   y="0" class="log-time">[8h ago]</text>
+    <text x="0"   y="0" class="log-time">[9h ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-eResearch/cercuripy</text>
-    <text x="357" y="0" class="log-msg">Fixed setup-uv workflow version</text>
+    <text x="357" y="0" class="log-msg">Updated uv lock</text>
   </g>
   <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
-    <text x="0"   y="0" class="log-time">[8h ago]</text>
+    <text x="0"   y="0" class="log-time">[9h ago]</text>
+    <text x="78"  y="0" class="log-repo">UoA-eResearch/cercuripy</text>
+    <text x="357" y="0" class="log-msg">Fixed lint error</text>
+  </g>
+  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
+    <text x="0"   y="0" class="log-time">[10h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/homelab_orgrimmar</text>
+    <text x="357" y="0" class="log-msg">Bump advplyr/audiobookshelf from 2.33.0...</text>
+  </g>
+  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
+    <text x="0"   y="0" class="log-time">[10h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/homelab_orgrimmar</text>
+    <text x="357" y="0" class="log-msg">Bump pihole/pihole from 2026.02.0 to 20...</text>
+  </g>
+  <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
+    <text x="0"   y="0" class="log-time">[10h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/homelab_undercity</text>
+    <text x="357" y="0" class="log-msg">Merge pull request #4 from thomaslauren...</text>
+  </g>
+  <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
+    <text x="0"   y="0" class="log-time">[1d ago]</text>
     <text x="78"  y="0" class="log-repo">thomaslaurenson/pass-env</text>
     <text x="357" y="0" class="log-msg">Tidied up GitHub release workflow</text>
   </g>
-  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
-    <text x="0"   y="0" class="log-time">[8h ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-eResearch/cercuripy</text>
-    <text x="357" y="0" class="log-msg">Refactor/extend tests (#27)</text>
-  </g>
-  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
-    <text x="0"   y="0" class="log-time">[9h ago]</text>
+  <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
+    <text x="0"   y="0" class="log-time">[1d ago]</text>
     <text x="78"  y="0" class="log-repo">thomaslaurenson/pass-env</text>
     <text x="357" y="0" class="log-msg">Attempting another fix for env run</text>
   </g>
-  <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
-    <text x="0"   y="0" class="log-time">[23h ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/letsblaze</text>
-    <text x="357" y="0" class="log-msg">Allowed tables to overflow</text>
-  </g>
-  <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
-    <text x="0"   y="0" class="log-time">[23h ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/letsblaze</text>
-    <text x="357" y="0" class="log-msg">Fixed overflow list pages and bold nav ...</text>
-  </g>
-  <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/narc</text>
-    <text x="357" y="0" class="log-msg">Refactor/windows support and fixes (#17)</text>
-  </g>
   <g class="stagger" style="animation-delay: 760ms" transform="translate(0, 154)">
     <text x="0"   y="0" class="log-time">[1d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/narc</text>
-    <text x="357" y="0" class="log-msg">Updated changelog, added README badges</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/letsblaze</text>
+    <text x="357" y="0" class="log-msg">Allowed tables to overflow</text>
   </g>
     </g>
   </g>
