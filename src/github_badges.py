@@ -1,3 +1,12 @@
+"""Generates static badge SVGs for contact and social links.
+
+Renders each badge defined in ``BADGES`` into dark and light SVG files
+under the badges output directory.
+
+Usage::
+
+    uv run python -m src.github_badges
+"""
 import logging
 import re
 from pathlib import Path

@@ -1,3 +1,12 @@
+"""Generates the GitHub plan SVG cards.
+
+Renders a static "what I am currently doing" card from the ``PLAN_ENTRIES``
+constant, producing dark and light SVG variants.
+
+Usage::
+
+    uv run python -m src.github_plan_card
+"""
 import html
 import logging
 from pathlib import Path
@@ -42,6 +51,12 @@ def generate_github_plan_cards(
     templates_dir: Path,
     output_dir: Path,
 ) -> tuple[Path, Path]:
+    """Render dark and light plan SVG cards from ``PLAN_ENTRIES``.
+
+    :param templates_dir: Directory containing the SVG template files.
+    :param output_dir: Directory where the rendered SVG files will be written.
+    :return: Tuple of ``(dark_svg_path, light_svg_path)``.
+    """
     logger.info("generating plan card (%d entries)", len(PLAN_ENTRIES))
     plan_lines = _build_plan_lines_svg(PLAN_ENTRIES)
     values = {"PLAN_LINES": plan_lines}

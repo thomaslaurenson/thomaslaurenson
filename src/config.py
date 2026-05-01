@@ -1,3 +1,15 @@
+"""Configuration and logging setup for GitHub statistics card generation.
+
+Loads the following from environment variables:
+
+1. ``GH_TOKEN`` -- GitHub personal access token.
+2. ``GH_USERNAME`` -- GitHub username for the profile to render.
+3. ``LOG_LEVEL`` -- Verbosity: ``NONE`` (silent), ``INFO`` (summary), ``DEBUG`` (includes API calls).
+
+Usage::
+
+    uv run python -m src.github_stats_card
+"""
 import logging
 import os
 from zoneinfo import ZoneInfo
@@ -13,7 +25,7 @@ if not GH_USERNAME:
 
 # LOG_LEVEL controls verbosity: "NONE" (silent), "INFO" (summary), "DEBUG" (includes API calls).
 # Can also be overridden via the LOG_LEVEL environment variable.
-LOG_LEVEL: str = os.getenv("LOG_LEVEL", "NONE").upper()
+LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO").upper()
 
 _level_map = {"NONE": logging.WARNING, "INFO": logging.INFO, "DEBUG": logging.DEBUG}
 logging.basicConfig(

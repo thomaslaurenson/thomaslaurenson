@@ -1,3 +1,9 @@
+"""GraphQL query strings for the GitHub API.
+
+Each constant is a parameterised GraphQL query used by
+:class:`~src.github_client.GitHubClient` to fetch profile statistics.
+"""
+
 TOTAL_STARS_QUERY = """
 query($username: String!, $cursor: String) {
   user(login: $username) {

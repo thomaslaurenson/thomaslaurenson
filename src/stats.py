@@ -1,3 +1,17 @@
+"""GitHub statistics data fetching and rank calculation.
+
+Provides the :class:`GitHubStats` class which queries the GitHub API for
+commit history, star counts, pull requests, issues, followers, and streak
+data; and the :func:`calculate_rank` function which derives a letter-grade
+rank from those statistics.
+
+Usage::
+
+    from src.stats import GitHubStats, calculate_rank
+
+    stats = GitHubStats("octocat")
+    stars = stats.get_total_stars()
+"""
 import logging
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
@@ -24,6 +38,7 @@ logger = logging.getLogger(__name__)
 
 
 class GitHubStats:
+    """Fetches and aggregates GitHub profile statistics for a given user."""
 
     def __init__(self, username):
         self.username = username
@@ -91,27 +106,37 @@ class GitHubStats:
         # provided the token can "see" those repositories.
         q = f"author:{self.username} is:issue"
         result = self.client.query(SEARCH_ISSUE_COUNT_QUERY, {"query": q})
-        return result["data"]["search"]["issueCount"]
+        count = result["data"]["search"]["issueCount"]
+        logger.info("total issues created: %d", count)
+        return count
 
     def get_display_name(self):
         result = self.client.query(USER_PROFILE_QUERY, {'username': self.username})
         user = result.get("data", {}).get("user") or {}
-        return user.get("name") or user.get("login") or self.username
+        name = user.get("name") or user.get("login") or self.username
+        logger.info("display name: %s", name)
+        return name
 
     def get_total_pull_requests_created(self):
         q = f"author:{self.username} is:pr"
         result = self.client.query(SEARCH_ISSUE_COUNT_QUERY, {"query": q})
-        return result["data"]["search"]["issueCount"]
+        count = result["data"]["search"]["issueCount"]
+        logger.info("total PRs created: %d", count)
+        return count
 
     def get_followers_count(self):
         result = self.client.query(FOLLOWERS_COUNT_QUERY, {'username': self.username})
-        return result['data']['user']['followers']['totalCount']
+        count = result['data']['user']['followers']['totalCount']
+        logger.info("followers: %d", count)
+        return count
 
     def get_total_reviews_created(self):
         # Count authored PR reviews via search.
         q = f"reviewed-by:{self.username} is:pr"
         result = self.client.query(SEARCH_REVIEW_COUNT_QUERY, {"query": q})
-        return result["data"]["search"]["issueCount"]
+        count = result["data"]["search"]["issueCount"]
+        logger.info("total reviews: %d", count)
+        return count
 
     def get_repos_contributed_last_year(self):
         now = datetime.now(timezone.utc)

@@ -1,3 +1,12 @@
+"""Generates the GitHub stats SVG cards.
+
+Fetches commit, star, PR, issue, review, and follower counts for a GitHub
+user, calculates a rank score, and renders dark and light SVG cards.
+
+Usage::
+
+    uv run python -m src.github_stats_card
+"""
 import logging
 from math import tau
 from pathlib import Path
@@ -15,6 +24,13 @@ def generate_github_stats_cards(
     output_dir: Path,
     username: str,
 ) -> tuple[Path, Path]:
+    """Fetch stats for *username* and render dark and light stats SVG cards.
+
+    :param templates_dir: Directory containing the SVG template files.
+    :param output_dir: Directory where the rendered SVG files will be written.
+    :param username: GitHub username to generate cards for.
+    :return: Tuple of ``(dark_svg_path, light_svg_path)``.
+    """
     logger.info("generating stats card for %s", username)
     stats = GitHubStats(username)
 

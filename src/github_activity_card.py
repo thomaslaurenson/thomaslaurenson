@@ -1,3 +1,12 @@
+"""Generates the GitHub activity SVG cards.
+
+Fetches recent push events for a user, resolves commit messages where
+necessary, and renders dark and light activity log SVG cards.
+
+Usage::
+
+    uv run python -m src.github_activity_card
+"""
 import html
 import logging
 from datetime import datetime, timezone
@@ -11,6 +20,11 @@ logger = logging.getLogger(__name__)
 
 
 def _relative_time(dt: datetime) -> str:
+    """Return a human-readable relative time string for *dt*.
+
+    :param dt: Timezone-aware datetime to format.
+    :return: String such as ``5m ago``, ``3h ago``, ``2d ago``.
+    """
     diff = datetime.now(timezone.utc) - dt
     seconds = int(diff.total_seconds())
     if seconds < 3600:
@@ -26,6 +40,17 @@ def _relative_time(dt: datetime) -> str:
 
 
 def _fetch_commit_message(client: GitHubClient, repo_name: str, sha: str) -> str:
+    """Fetch the first line of the commit message for *sha* in *repo_name*.
+
+    Returns an empty string on any error rather than propagating exceptions,
+    since commit message resolution is best-effort.
+
+    :param client: Authenticated GitHub client.
+    :param repo_name: Full repository name in ``owner/repo`` format.
+    :param sha: Full or abbreviated commit SHA.
+    :return: First line of the commit message, truncated to 70 characters.
+    """
+    logger.debug("fetching commit message for %s@%s", repo_name, sha[:7])
     try:
         data = client.get_rest(f"/repos/{repo_name}/commits/{sha}")
         if isinstance(data, dict):
@@ -33,10 +58,17 @@ def _fetch_commit_message(client: GitHubClient, repo_name: str, sha: str) -> str
             return msg.split("\n")[0][:70]
     except Exception:
         pass
+    logger.debug("could not resolve commit message for %s@%s", repo_name, sha[:7])
     return ""
 
 
 def _fetch_push_events(client: GitHubClient, path: str) -> list[dict]:
+    """Fetch and parse push events from the GitHub REST events endpoint.
+
+    :param client: Authenticated GitHub client.
+    :param path: API path, e.g. ``/users/octocat/events``.
+    :return: List of push event dicts with ``repo``, ``message``, ``head_sha``, and ``timestamp``.
+    """
     entries: list[dict] = []
     try:
         events = client.get_rest(path, params={"per_page": 100})
