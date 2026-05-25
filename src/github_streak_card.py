@@ -7,6 +7,7 @@ Usage::
 
     uv run python -m src.github_streak_card
 """
+
 import logging
 from pathlib import Path
 
@@ -36,8 +37,10 @@ def generate_github_streak_cards(
     first_year, first_full = stats.get_first_contribution_date()
     logger.info(
         "streak: current=%d (%s), longest=%d (%s)",
-        streak["current_streak"], streak["current_range"],
-        streak["longest_streak"], streak["longest_range"],
+        streak["current_streak"],
+        streak["current_range"],
+        streak["longest_streak"],
+        streak["longest_range"],
     )
 
     values = {
@@ -81,5 +84,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-

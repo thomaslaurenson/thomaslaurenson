@@ -13,6 +13,7 @@ Usage::
     client = GitHubClient()
     result = client.query(MY_QUERY, {"username": "octocat"})
 """
+
 import logging
 from collections.abc import Callable
 
@@ -20,7 +21,7 @@ import requests
 
 from src.config import API_URL, GH_TOKEN
 
-REST_API_URL = 'https://api.github.com'
+REST_API_URL = "https://api.github.com"
 
 logger = logging.getLogger(__name__)
 
@@ -30,8 +31,8 @@ class GitHubClient:
 
     def __init__(self) -> None:
         self.headers = {
-            'Authorization': f'Bearer {GH_TOKEN}',
-            'Content-Type': 'application/json',
+            "Authorization": f"Bearer {GH_TOKEN}",
+            "Content-Type": "application/json",
         }
 
     def get_rest(self, path: str, params: dict | None = None) -> dict | list:
@@ -55,15 +56,11 @@ class GitHubClient:
         :raises RuntimeError: When the response contains GraphQL errors or is malformed.
         :return: Full parsed response dict including the ``data`` key.
         """
-        payload = {'query': query_string}
+        payload = {"query": query_string}
         if variables:
-            payload['variables'] = variables
+            payload["variables"] = variables
         logger.debug("GraphQL query variables=%s", list(variables.keys()) if variables else None)
-        response = requests.post(
-            API_URL,
-            json=payload,
-            headers=self.headers
-        )
+        response = requests.post(API_URL, json=payload, headers=self.headers)
         response.raise_for_status()
         data = response.json()
         if isinstance(data, dict) and "errors" in data:
@@ -88,15 +85,15 @@ class GitHubClient:
         logger.debug("starting paginated query for user %s", username)
 
         while has_next_page:
-            variables = {'username': username, 'cursor': cursor}
+            variables = {"username": username, "cursor": cursor}
             result = self.query(query_string, variables)
 
             process_fn(result)
             page_count += 1
 
             page_info = self._extract_page_info(result)
-            has_next_page = page_info.get('hasNextPage', False)
-            cursor = page_info.get('endCursor')
+            has_next_page = page_info.get("hasNextPage", False)
+            cursor = page_info.get("endCursor")
 
         logger.debug("paginated query complete for user %s: %d page(s)", username, page_count)
 
@@ -116,26 +113,26 @@ class GitHubClient:
         logger.debug("starting paginated org query for org %s", org)
 
         while has_next_page:
-            variables = {'org': org, 'cursor': cursor}
+            variables = {"org": org, "cursor": cursor}
             result = self.query(query_string, variables)
 
             process_fn(result)
             page_count += 1
 
             page_info = self._extract_org_page_info(result)
-            has_next_page = page_info.get('hasNextPage', False)
-            cursor = page_info.get('endCursor')
+            has_next_page = page_info.get("hasNextPage", False)
+            cursor = page_info.get("endCursor")
 
         logger.debug("paginated org query complete for org %s: %d page(s)", org, page_count)
 
     def _extract_page_info(self, result: dict) -> dict:
         try:
-            return result['data']['user']['repositories']['pageInfo']
+            return result["data"]["user"]["repositories"]["pageInfo"]
         except (KeyError, TypeError):
             return {}
 
     def _extract_org_page_info(self, result: dict) -> dict:
         try:
-            return result['data']['organization']['repositories']['pageInfo']
+            return result["data"]["organization"]["repositories"]["pageInfo"]
         except (KeyError, TypeError):
             return {}

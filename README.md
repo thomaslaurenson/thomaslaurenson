@@ -52,11 +52,6 @@
   </a>
 </p>
 
-<!-- Profile views counter (dynamic — external service) -->
-<!-- <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=thomaslaurenson&label=Profile+views&style=flat" alt="profile views" />
-</p> -->
-
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="cards/github_stats_card_dark.svg">
@@ -84,3 +79,12 @@
     <img alt="Thomas Laurenson's GitHub Activity Feed" src="cards/github_activity_card_light.svg">
   </picture>
 </div>
+
+<!--
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="cards/github_pr_card_dark.svg">
+    <img alt="Thomas Laurenson's GitHub External PRs" src="cards/github_pr_card_light.svg">
+  </picture>
+</div>
+-->

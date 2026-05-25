@@ -12,6 +12,7 @@ Usage::
     stats = GitHubStats("octocat")
     stars = stats.get_total_stars()
 """
+
 import logging
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
@@ -49,15 +50,15 @@ class GitHubStats:
 
         def process_stars(result):
             nonlocal total_stars
-            repos = result['data']['user']['repositories']['nodes']
-            total_stars += sum(repo['stargazerCount'] for repo in repos)
+            repos = result["data"]["user"]["repositories"]["nodes"]
+            total_stars += sum(repo["stargazerCount"] for repo in repos)
 
         self.client.paginated_query(TOTAL_STARS_QUERY, self.username, process_stars)
 
         def process_org_stars(result):
             nonlocal total_stars
-            repos = result['data']['organization']['repositories']['nodes']
-            total_stars += sum(repo['stargazerCount'] for repo in repos)
+            repos = result["data"]["organization"]["repositories"]["nodes"]
+            total_stars += sum(repo["stargazerCount"] for repo in repos)
 
         for org in STARS_ORGS:
             self.client.paginated_org_query(ORG_STARS_QUERY, org, process_org_stars)
@@ -70,33 +71,29 @@ class GitHubStats:
         one_year_ago = now - timedelta(days=365)
 
         variables = {
-            'username': self.username,
-            'from': one_year_ago.isoformat(),
-            'to': now.isoformat(),
+            "username": self.username,
+            "from": one_year_ago.isoformat(),
+            "to": now.isoformat(),
         }
 
         result = self.client.query(YEAR_CONTRIBUTIONS_QUERY, variables)
-        contributions = result['data']['user']['contributionsCollection']
-        return contributions['contributionCalendar']['totalContributions']
+        contributions = result["data"]["user"]["contributionsCollection"]
+        return contributions["contributionCalendar"]["totalContributions"]
 
     def get_commits_all_time(self):
-        result = self.client.query(ALL_TIME_CONTRIBUTIONS_QUERY, {'username': self.username})
-        years = result['data']['user']['contributionsCollection']['contributionYears']
+        result = self.client.query(ALL_TIME_CONTRIBUTIONS_QUERY, {"username": self.username})
+        years = result["data"]["user"]["contributionsCollection"]["contributionYears"]
 
         total_commits = 0
         for year in years:
             start = datetime(year, 1, 1, tzinfo=timezone.utc)
             end = datetime(year, 12, 31, 23, 59, 59, tzinfo=timezone.utc)
 
-            variables = {
-                'username': self.username,
-                'from': start.isoformat(),
-                'to': end.isoformat()
-            }
+            variables = {"username": self.username, "from": start.isoformat(), "to": end.isoformat()}
 
             result = self.client.query(YEAR_CONTRIBUTIONS_QUERY, variables)
-            contributions = result['data']['user']['contributionsCollection']
-            total_commits += contributions['contributionCalendar']['totalContributions']
+            contributions = result["data"]["user"]["contributionsCollection"]
+            total_commits += contributions["contributionCalendar"]["totalContributions"]
 
         logger.info("commits all time: %d across %d years", total_commits, len(years))
         return total_commits
@@ -111,7 +108,7 @@ class GitHubStats:
         return count
 
     def get_display_name(self):
-        result = self.client.query(USER_PROFILE_QUERY, {'username': self.username})
+        result = self.client.query(USER_PROFILE_QUERY, {"username": self.username})
         user = result.get("data", {}).get("user") or {}
         name = user.get("name") or user.get("login") or self.username
         logger.info("display name: %s", name)
@@ -125,8 +122,8 @@ class GitHubStats:
         return count
 
     def get_followers_count(self):
-        result = self.client.query(FOLLOWERS_COUNT_QUERY, {'username': self.username})
-        count = result['data']['user']['followers']['totalCount']
+        result = self.client.query(FOLLOWERS_COUNT_QUERY, {"username": self.username})
+        count = result["data"]["user"]["followers"]["totalCount"]
         logger.info("followers: %d", count)
         return count
 
@@ -143,14 +140,14 @@ class GitHubStats:
         one_year_ago = now - timedelta(days=365)
 
         variables = {
-            'username': self.username,
-            'from': one_year_ago.isoformat(),
-            'to': now.isoformat(),
+            "username": self.username,
+            "from": one_year_ago.isoformat(),
+            "to": now.isoformat(),
         }
 
         result = self.client.query(YEAR_CONTRIBUTIONS_SUMMARY_QUERY, variables)
-        contributions = result['data']['user']['contributionsCollection']
-        return contributions['totalRepositoriesWithContributedCommits']
+        contributions = result["data"]["user"]["contributionsCollection"]
+        return contributions["totalRepositoriesWithContributedCommits"]
 
     def get_top_languages(self, top_n=6, exclude=None):
         if exclude is None:
@@ -158,24 +155,24 @@ class GitHubStats:
         language_bytes = defaultdict(int)
 
         def process_languages(result):
-            repos = result['data']['user']['repositories']['nodes']
+            repos = result["data"]["user"]["repositories"]["nodes"]
             for repo in repos:
-                for edge in repo['languages']['edges']:
-                    name = edge['node']['name']
+                for edge in repo["languages"]["edges"]:
+                    name = edge["node"]["name"]
                     if name in exclude:
                         continue
-                    language_bytes[name] += edge['size']
+                    language_bytes[name] += edge["size"]
 
         self.client.paginated_query(USER_LANGUAGES_QUERY, self.username, process_languages)
 
         def process_org_languages(result):
-            repos = result['data']['organization']['repositories']['nodes']
+            repos = result["data"]["organization"]["repositories"]["nodes"]
             for repo in repos:
-                for edge in repo['languages']['edges']:
-                    name = edge['node']['name']
+                for edge in repo["languages"]["edges"]:
+                    name = edge["node"]["name"]
                     if name in exclude:
                         continue
-                    language_bytes[name] += edge['size']
+                    language_bytes[name] += edge["size"]
 
         for org in LANGUAGES_ORGS:
             self.client.paginated_org_query(ORG_LANGUAGES_QUERY, org, process_org_languages)
@@ -184,20 +181,18 @@ class GitHubStats:
         if total_bytes == 0:
             return []
 
-        sorted_languages = sorted(
-            language_bytes.items(),
-            key=lambda x: x[1],
-            reverse=True
-        )
+        sorted_languages = sorted(language_bytes.items(), key=lambda x: x[1], reverse=True)
 
         top_languages = []
         for lang, bytes_count in sorted_languages[:top_n]:
             percentage = (bytes_count / total_bytes) * 100
-            top_languages.append({
-                'language': lang,
-                'percentage': round(percentage, 2),
-                'bytes': bytes_count,
-            })
+            top_languages.append(
+                {
+                    "language": lang,
+                    "percentage": round(percentage, 2),
+                    "bytes": bytes_count,
+                }
+            )
 
         logger.info(
             "top languages: %s",
@@ -206,10 +201,10 @@ class GitHubStats:
         return top_languages
 
     def get_first_contribution_date(self) -> tuple[str, str]:
-        years_resp = self.client.query(ALL_TIME_CONTRIBUTIONS_QUERY, {'username': self.username})
-        years = sorted(years_resp['data']['user']['contributionsCollection']['contributionYears'])
+        years_resp = self.client.query(ALL_TIME_CONTRIBUTIONS_QUERY, {"username": self.username})
+        years = sorted(years_resp["data"]["user"]["contributionsCollection"]["contributionYears"])
         if not years:
-            return ("–", "–")
+            return ("-", "-")
 
         for year in years:
             start_dt = datetime(year, 1, 1, tzinfo=timezone.utc)
@@ -220,16 +215,16 @@ class GitHubStats:
                 logger.info("first contribution: %s", first.isoformat())
                 return (str(first.year), first.strftime("%b %-d, %Y"))
 
-        return ("–", "–")
+        return ("-", "-")
 
     def get_total_contributions(self):
         return self.get_commits_all_time()
 
     def _fetch_calendar_days(self, start_dt: datetime, end_dt: datetime):
         variables = {
-            'username': self.username,
-            'from': start_dt.isoformat(),
-            'to': end_dt.isoformat(),
+            "username": self.username,
+            "from": start_dt.isoformat(),
+            "to": end_dt.isoformat(),
         }
         result = self.client.query(STREAK_CALENDAR_QUERY, variables)
         weeks = result["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
@@ -240,9 +235,8 @@ class GitHubStats:
         return days_list
 
     def get_streak_stats(self) -> dict:
-        # Determine all contribution years
-        years_resp = self.client.query(ALL_TIME_CONTRIBUTIONS_QUERY, {'username': self.username})
-        years = years_resp['data']['user']['contributionsCollection']['contributionYears']
+        years_resp = self.client.query(ALL_TIME_CONTRIBUTIONS_QUERY, {"username": self.username})
+        years = years_resp["data"]["user"]["contributionsCollection"]["contributionYears"]
         if not years:
             return {
                 "total_contributions": 0,
@@ -290,9 +284,8 @@ class GitHubStats:
         first_day = days_list[0][0]
         last_day = days_list[-1][0]
 
-        # Longest streak scan (forward over weekday-only entries).
-        # After the weekend filter every consecutive pair in the list is a consecutive
-        # weekday, so a simple prev_has flag is sufficient — no day-gap check needed.
+        # Longest streak scan: after the weekend filter every consecutive pair is a consecutive
+        # weekday, so a simple prev_has flag is sufficient (no day-gap check needed).
         longest_len = 0
         longest_start = None
         longest_end = None
@@ -316,9 +309,8 @@ class GitHubStats:
                 run_start = None
             prev_has = has
 
-        # Current streak (most-recent weekday backwards).
-        # Grace period: if "today UTC" has 0 contributions and is still a weekday in NZT,
-        # the user may not have committed yet today — skip ahead to the previous weekday.
+        # Current streak (most-recent weekday backwards). Grace period: if today UTC has 0
+        # contributions and is still a weekday in NZT, skip ahead to the previous weekday.
         today_nzt = datetime.now(LOCAL_TZ).date()
         today_utc = datetime.now(timezone.utc).date()
 
@@ -328,9 +320,7 @@ class GitHubStats:
         last_idx = len(days_list) - 1
         last_day_entry, last_count = days_list[last_idx]
 
-        if (last_count == 0
-                and today_nzt.weekday() < 5
-                and last_day_entry == today_utc):
+        if last_count == 0 and today_nzt.weekday() < 5 and last_day_entry == today_utc:
             last_idx -= 1
 
         if last_idx >= 0:
@@ -399,23 +389,20 @@ def calculate_rank(
     FOLLOWERS_MEDIAN = 10
     FOLLOWERS_WEIGHT = 1
 
-    TOTAL_WEIGHT = (
-        COMMITS_WEIGHT
-        + PRS_WEIGHT
-        + ISSUES_WEIGHT
-        + REVIEWS_WEIGHT
-        + STARS_WEIGHT
-        + FOLLOWERS_WEIGHT
-    )
+    TOTAL_WEIGHT = COMMITS_WEIGHT + PRS_WEIGHT + ISSUES_WEIGHT + REVIEWS_WEIGHT + STARS_WEIGHT + FOLLOWERS_WEIGHT
 
-    rank = 1 - (
-        COMMITS_WEIGHT * exponential_cdf(commits / COMMITS_MEDIAN)
-        + PRS_WEIGHT * exponential_cdf(prs / PRS_MEDIAN)
-        + ISSUES_WEIGHT * exponential_cdf(issues / ISSUES_MEDIAN)
-        + REVIEWS_WEIGHT * exponential_cdf(reviews / REVIEWS_MEDIAN)
-        + STARS_WEIGHT * log_normal_cdf(stars / STARS_MEDIAN)
-        + FOLLOWERS_WEIGHT * log_normal_cdf(followers / FOLLOWERS_MEDIAN)
-    ) / TOTAL_WEIGHT
+    rank = (
+        1
+        - (
+            COMMITS_WEIGHT * exponential_cdf(commits / COMMITS_MEDIAN)
+            + PRS_WEIGHT * exponential_cdf(prs / PRS_MEDIAN)
+            + ISSUES_WEIGHT * exponential_cdf(issues / ISSUES_MEDIAN)
+            + REVIEWS_WEIGHT * exponential_cdf(reviews / REVIEWS_MEDIAN)
+            + STARS_WEIGHT * log_normal_cdf(stars / STARS_MEDIAN)
+            + FOLLOWERS_WEIGHT * log_normal_cdf(followers / FOLLOWERS_MEDIAN)
+        )
+        / TOTAL_WEIGHT
+    )
 
     thresholds = [1, 12.5, 25, 37.5, 50, 62.5, 75, 87.5, 100]
     levels = ["S", "A+", "A", "A-", "B+", "B", "B-", "C+", "C"]

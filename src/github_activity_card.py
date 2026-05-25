@@ -7,6 +7,7 @@ Usage::
 
     uv run python -m src.github_activity_card
 """
+
 import html
 import logging
 from datetime import datetime, timezone
@@ -96,17 +97,17 @@ def _fetch_push_events(client: GitHubClient, path: str) -> list[dict]:
         else:
             msg = None  # resolve later via commit API
         try:
-            created_at = datetime.fromisoformat(
-                event["created_at"].replace("Z", "+00:00")
-            )
+            created_at = datetime.fromisoformat(event["created_at"].replace("Z", "+00:00"))
         except (KeyError, ValueError):
             continue
-        entries.append({
-            "repo": repo_name,
-            "message": msg,
-            "head_sha": head_sha,
-            "timestamp": created_at,
-        })
+        entries.append(
+            {
+                "repo": repo_name,
+                "message": msg,
+                "head_sha": head_sha,
+                "timestamp": created_at,
+            }
+        )
 
     logger.debug("fetched %d push events from %s", len(entries), path)
     return entries
@@ -149,10 +150,8 @@ def generate_github_activity_cards(
 
     entries: list[dict] = _fetch_push_events(client, f"/users/{username}/events")
 
-    # Sort most-recent first
     entries.sort(key=lambda x: x["timestamp"], reverse=True)
 
-    # Apply max-2-per-repo cap, then take top 8
     repo_counts: dict[str, int] = {}
     filtered: list[dict] = []
     for entry in entries:
@@ -163,7 +162,6 @@ def generate_github_activity_cards(
         if len(filtered) >= 8:
             break
 
-    # Resolve commit messages for entries that need them (new API format)
     for entry in filtered:
         if entry["message"] is None and entry.get("head_sha"):
             entry["message"] = _fetch_commit_message(client, entry["repo"], entry["head_sha"])

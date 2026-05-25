@@ -10,18 +10,19 @@ Usage::
 
     uv run python -m src.github_stats_card
 """
+
 import logging
 import os
 from zoneinfo import ZoneInfo
 
-GH_TOKEN = os.getenv('GH_TOKEN')
-GH_USERNAME = os.getenv('GH_USERNAME')
-API_URL = 'https://api.github.com/graphql'
+GH_TOKEN = os.getenv("GH_TOKEN")
+GH_USERNAME = os.getenv("GH_USERNAME")
+API_URL = "https://api.github.com/graphql"
 
 if not GH_TOKEN:
-    raise ValueError('GH_TOKEN not found in environment variables')
+    raise ValueError("GH_TOKEN not found in environment variables")
 if not GH_USERNAME:
-    raise ValueError('GH_USERNAME not found in environment variables')
+    raise ValueError("GH_USERNAME not found in environment variables")
 
 # LOG_LEVEL controls verbosity: "NONE" (silent), "INFO" (summary), "DEBUG" (includes API calls).
 # Can also be overridden via the LOG_LEVEL environment variable.
@@ -34,7 +35,7 @@ logging.basicConfig(
     handlers=[logging.StreamHandler()],
 )
 
-# Per-org configuration — controls which orgs contribute to star and language stats.
+# Per-org configuration: controls which orgs contribute to star and language stats.
 ORG_CONFIG = [
     {"name": "thegraydot", "stars": True, "languages": True},
     {"name": "UoA-eResearch", "stars": False, "languages": False},
@@ -43,6 +44,9 @@ ORG_CONFIG = [
 
 STARS_ORGS = [o["name"] for o in ORG_CONFIG if o["stars"]]
 LANGUAGES_ORGS = [o["name"] for o in ORG_CONFIG if o["languages"]]
+
+# Orgs excluded from the external PR feed (affiliated but not personal).
+PR_EXCLUDE_ORGS = [o["name"] for o in ORG_CONFIG]
 
 # Local timezone used for streak calculations (determines "today" and grace period).
 LOCAL_TZ = ZoneInfo("Pacific/Auckland")

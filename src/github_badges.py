@@ -7,6 +7,7 @@ Usage::
 
     uv run python -m src.github_badges
 """
+
 import logging
 import re
 from pathlib import Path
@@ -95,7 +96,7 @@ def _calc_section_width(text: str, *, include_dot: bool = False) -> int:
 
 def load_icon_paths(icon_filename: str) -> str:
     content = (ICONS_DIR / icon_filename).read_text(encoding="utf-8")
-    inner = re.search(r'<svg[^>]*>(.*?)</svg>', content, re.DOTALL)
+    inner = re.search(r"<svg[^>]*>(.*?)</svg>", content, re.DOTALL)
     if inner:
         return inner.group(1).strip()
     return ""
@@ -103,13 +104,10 @@ def load_icon_paths(icon_filename: str) -> str:
 
 def _icon_group_attrs(icon_filename: str, icon_color: str) -> str:
     content = (ICONS_DIR / icon_filename).read_text(encoding="utf-8")
-    svg_tag_match = re.search(r'<svg[^>]*>', content, re.DOTALL)
-    if svg_tag_match and 'stroke-width' in svg_tag_match.group():
+    svg_tag_match = re.search(r"<svg[^>]*>", content, re.DOTALL)
+    if svg_tag_match and "stroke-width" in svg_tag_match.group():
         # Lucide-style: stroke-based
-        return (
-            f'fill="none" stroke="{icon_color}" '
-            f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'
-        )
+        return f'fill="none" stroke="{icon_color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'
     # Simple Icons style: fill-based
     return f'fill="{icon_color}" stroke="none"'
 
@@ -175,6 +173,7 @@ def main() -> None:
     output_dir = repo_root / "badges"
 
     generate_badges(templates_dir=templates_dir, output_dir=output_dir)
+
 
 if __name__ == "__main__":
     main()

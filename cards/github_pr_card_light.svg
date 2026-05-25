@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 220" width="650px" height="220px" role="img" aria-label="GitHub External PR Feed">
+  <style>
+    .prompt {
+      font: 400 11px 'Courier New', Courier, monospace;
+      fill: #7a9e7a;
+    }
+
+    .pr-icon {
+      font: 700 13px 'Courier New', Courier, monospace;
+    }
+
+    .pr-merged {
+      fill: #1a4d1a;
+    }
+
+    .pr-open {
+      fill: #8a6a00;
+    }
+
+    .pr-closed {
+      fill: #7a9e7a;
+    }
+
+    .pr-repo {
+      font: 400 11px 'Courier New', Courier, monospace;
+      fill: #2a6e2a;
+    }
+
+    .pr-title {
+      font: 400 11px 'Courier New', Courier, monospace;
+      fill: #1a4d1a;
+    }
+
+    .pr-time {
+      font: 400 11px 'Courier New', Courier, monospace;
+      fill: #7a9e7a;
+    }
+
+    .stagger {
+      opacity: 0;
+      animation: fadein 0.4s ease-in-out forwards;
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+  <defs>
+    <clipPath id="outer_rect">
+      <rect width="650" height="220" rx="4.5" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#outer_rect)">
+    <rect fill="none" rx="4.5" x="0.5" y="0.5" width="649" height="219" />
+    <!-- Terminal prompt header -->
+    <text x="12" y="18" class="prompt">thomaslaurenson@github:~$ gh pr list --author=@me --external</text>
+    <!-- PR lines injected by Python (_build_pr_lines_svg) -->
+    <g transform="translate(12, 44)">
+        <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
+    <text x="0"   y="0" class="pr-icon pr-merged">+</text>
+    <text x="20"  y="0" class="pr-repo">ladislav-zezula/StormLib</text>
+    <text x="230" y="0" class="pr-title">Added definitions for *64 symbols in StormPor...</text>
+    <text x="572" y="0" class="pr-time">3mo ago</text>
+  </g>
+  <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
+    <text x="0"   y="0" class="pr-icon pr-closed">x</text>
+    <text x="20"  y="0" class="pr-repo">NeCTAR-RC/openstack-bash-cr...</text>
+    <text x="230" y="0" class="pr-title">Fixed chchreds typo</text>
+    <text x="572" y="0" class="pr-time">8mo ago</text>
+  </g>
+  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
+    <text x="0"   y="0" class="pr-icon pr-merged">+</text>
+    <text x="20"  y="0" class="pr-repo">tclark/op-papers</text>
+    <text x="230" y="0" class="pr-title">Sysadmin: Updated course directive for 2019 d...</text>
+    <text x="572" y="0" class="pr-time">88mo ago</text>
+  </g>
+    </g>
+  </g>
+</svg>

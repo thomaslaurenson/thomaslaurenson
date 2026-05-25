@@ -7,6 +7,7 @@ Usage::
 
     uv run python -m src.github_stats_card
 """
+
 import logging
 from math import tau
 from pathlib import Path
@@ -53,7 +54,13 @@ def generate_github_stats_cards(
     )
     logger.info(
         "stats: stars=%d, commits=%d, prs=%d, issues=%d, reviews=%d, followers=%d, rank=%s",
-        total_stars, commits_all_time, total_prs, total_issues, reviews, followers, level,
+        total_stars,
+        commits_all_time,
+        total_prs,
+        total_issues,
+        reviews,
+        followers,
+        level,
     )
 
     # Circle progress shows 100 - percentile; dashoffset is proportional to percentile

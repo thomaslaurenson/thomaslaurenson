@@ -7,6 +7,7 @@ Usage::
 
     uv run python -m src.github_plan_card
 """
+
 import html
 import logging
 from pathlib import Path
@@ -15,7 +16,7 @@ from src.render_template import render_template
 
 logger = logging.getLogger(__name__)
 
-# Plan entries — edit to update the card. Each is a (KEYWORD, content) pair.
+# Plan entries (edit to update the card). Each is a (KEYWORD, content) pair.
 # KEYWORD is displayed in bold; keep the total at 8 to fit the card height.
 PLAN_ENTRIES: list[tuple[str, str]] = [
     ("BUILDING", "Security utilities for Linux and OpenStack"),

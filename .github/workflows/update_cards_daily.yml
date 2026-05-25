@@ -28,22 +28,21 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.11"
+      - name: Extract Python version
+        id: python-version
+        run: echo "version=$(make get_python_required_version)" >> $GITHUB_OUTPUT
 
-      - name: Install uv
-        run: pip install --upgrade uv
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ steps.python-version.outputs.version }}
+
+      - uses: astral-sh/setup-uv@v7
 
       - name: Install project dependencies
-        run: uv sync
+        run: make sync
 
       - name: Generate cards
-        run: |
-          uv run python -m src.github_stats_card
-          uv run python -m src.github_streak_card
-          uv run python -m src.github_activity_card
+        run: make github_cards
 
       - name: Get current date
         run: |
