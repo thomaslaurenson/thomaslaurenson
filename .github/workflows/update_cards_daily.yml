@@ -32,7 +32,7 @@ jobs:
         id: python-version
         run: echo "version=$(make get_python_required_version)" >> $GITHUB_OUTPUT
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ steps.python-version.outputs.version }}
 
