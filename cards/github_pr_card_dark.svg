@@ -66,7 +66,7 @@
     <text x="0"   y="0" class="pr-icon pr-merged">+</text>
     <text x="20"  y="0" class="pr-repo">ladislav-zezula/StormLib</text>
     <text x="230" y="0" class="pr-title">Added definitions for *64 symbols in StormPor...</text>
-    <text x="572" y="0" class="pr-time">3mo ago</text>
+    <text x="572" y="0" class="pr-time">4mo ago</text>
   </g>
   <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
     <text x="0"   y="0" class="pr-icon pr-closed">x</text>
