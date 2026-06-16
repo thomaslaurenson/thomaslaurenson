@@ -51,44 +51,44 @@
     <!-- Log lines injected by Python (_build_log_lines_svg) -->
     <g transform="translate(12, 44)">
         <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+    <text x="0"   y="0" class="log-time">[1h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/war10ck</text>
+    <text x="357" y="0" class="log-msg">Bumped to 0.5.1 to fix release</text>
+  </g>
+  <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
+    <text x="0"   y="0" class="log-time">[1h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/war10ck</text>
+    <text x="357" y="0" class="log-msg">Bumped version</text>
+  </g>
+  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
+    <text x="0"   y="0" class="log-time">[4h ago]</text>
+    <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_uc_vault</text>
+    <text x="357" y="0" class="log-msg">Added rbd scanner tls cert endpoint</text>
+  </g>
+  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
+    <text x="0"   y="0" class="log-time">[4h ago]</text>
+    <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_uc_vault</text>
+    <text x="357" y="0" class="log-msg">Fix TLS onboarding to also install vaul...</text>
+  </g>
+  <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
+    <text x="0"   y="0" class="log-time">[5h ago]</text>
+    <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_rbd_scanner</text>
+    <text x="357" y="0" class="log-msg">Refactor/server migration (#9)</text>
+  </g>
+  <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">thomaslaurenson/homelab_undercity</text>
     <text x="357" y="0" class="log-msg">Added more sync mirrors</text>
   </g>
-  <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
-    <text x="0"   y="0" class="log-time">[3d ago]</text>
+  <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
+    <text x="0"   y="0" class="log-time">[4d ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-SRE/bash_toolkit</text>
     <text x="357" y="0" class="log-msg">Fix for no etc hosts override when requ...</text>
   </g>
-  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
-    <text x="0"   y="0" class="log-time">[4d ago]</text>
+  <g class="stagger" style="animation-delay: 760ms" transform="translate(0, 154)">
+    <text x="0"   y="0" class="log-time">[5d ago]</text>
     <text x="78"  y="0" class="log-repo">thegraydot/mpqcli</text>
     <text x="357" y="0" class="log-msg">Correcting documentation statement (#172)</text>
-  </g>
-  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
-    <text x="0"   y="0" class="log-time">[4d ago]</text>
-    <text x="78"  y="0" class="log-repo">thegraydot/oneonetwo</text>
-    <text x="357" y="0" class="log-msg">Added interfacing</text>
-  </g>
-  <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
-    <text x="0"   y="0" class="log-time">[4d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/pass-env</text>
-    <text x="357" y="0" class="log-msg">Bumped man page and changelog version</text>
-  </g>
-  <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
-    <text x="0"   y="0" class="log-time">[4d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/pass-env</text>
-    <text x="357" y="0" class="log-msg">General tidy and proof read, bumped to ...</text>
-  </g>
-  <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
-    <text x="0"   y="0" class="log-time">[4d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-SRE/ansible</text>
-    <text x="357" y="0" class="log-msg">Feature/wazuh agent (#144)</text>
-  </g>
-  <g class="stagger" style="animation-delay: 760ms" transform="translate(0, 154)">
-    <text x="0"   y="0" class="log-time">[4d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-SRE/ansible</text>
-    <text x="357" y="0" class="log-msg">Merge branch &#x27;main&#x27; of github.com:UoA-S...</text>
   </g>
     </g>
   </g>
