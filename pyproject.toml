@@ -9,7 +9,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "ruff>=0.15.18",
+    "ruff>=0.15.22",
 ]
 
 [build-system]
