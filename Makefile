@@ -15,6 +15,10 @@ sync: ## Install/sync deps with uv
 lock: ## Update uv.lock
 	uv lock
 
+.PHONY: update
+update: ## Update deps with uv
+	uv sync --upgrade
+
 # LINT
 .PHONY: fmt
 fmt: ## Format code with ruff
