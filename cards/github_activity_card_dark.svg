@@ -51,44 +51,44 @@
     <!-- Log lines injected by Python (_build_log_lines_svg) -->
     <g transform="translate(12, 44)">
         <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
-    <text x="0"   y="0" class="log-time">[8h ago]</text>
+    <text x="0"   y="0" class="log-time">[2h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/moon</text>
+    <text x="357" y="0" class="log-msg">Move to new gpipe action</text>
+  </g>
+  <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
+    <text x="0"   y="0" class="log-time">[2h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/gpipe</text>
+    <text x="357" y="0" class="log-msg">Refactor/combine repos (#15)</text>
+  </g>
+  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
+    <text x="0"   y="0" class="log-time">[2h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/gpipe</text>
+    <text x="357" y="0" class="log-msg">Added the 1.4.0 changelog entry</text>
+  </g>
+  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
+    <text x="0"   y="0" class="log-time">[2h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/homelab_ansible</text>
+    <text x="357" y="0" class="log-msg">Added timezone role and tidied project</text>
+  </g>
+  <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
+    <text x="0"   y="0" class="log-time">[3h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/war10ck</text>
+    <text x="357" y="0" class="log-msg">Added Claude session and weekly usage m...</text>
+  </g>
+  <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
+    <text x="0"   y="0" class="log-time">[1d ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_rbd_scanner</text>
     <text x="357" y="0" class="log-msg">Feature/rbd status columns (#10)</text>
   </g>
-  <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+  <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_rbd_scanner</text>
     <text x="357" y="0" class="log-msg">Always output a scan state</text>
   </g>
-  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
-    <text x="0"   y="0" class="log-time">[3d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/gpipe</text>
-    <text x="357" y="0" class="log-msg">Prefixed the Gpipe-Version stamp with v...</text>
-  </g>
-  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
-    <text x="0"   y="0" class="log-time">[3d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/gpipe-action</text>
-    <text x="357" y="0" class="log-msg">Merge pull request #3 from thomaslauren...</text>
-  </g>
-  <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
-    <text x="0"   y="0" class="log-time">[3d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/gpipe</text>
-    <text x="357" y="0" class="log-msg">Feature/document version in installers ...</text>
-  </g>
-  <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
-    <text x="0"   y="0" class="log-time">[6d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-SRE/vault</text>
-    <text x="357" y="0" class="log-msg">Ensure volume deletion is not performed...</text>
-  </g>
-  <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
-    <text x="0"   y="0" class="log-time">[6d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-SRE/vault</text>
-    <text x="357" y="0" class="log-msg">Fixed DR docker compose file for when c...</text>
-  </g>
   <g class="stagger" style="animation-delay: 760ms" transform="translate(0, 154)">
     <text x="0"   y="0" class="log-time">[1w ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/moon</text>
-    <text x="357" y="0" class="log-msg">Updated README</text>
+    <text x="78"  y="0" class="log-repo">UoA-SRE/vault</text>
+    <text x="357" y="0" class="log-msg">Ensure volume deletion is not performed...</text>
   </g>
     </g>
   </g>
