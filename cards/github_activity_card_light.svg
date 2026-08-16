@@ -51,44 +51,44 @@
     <!-- Log lines injected by Python (_build_log_lines_svg) -->
     <g transform="translate(12, 44)">
         <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
-    <text x="0"   y="0" class="log-time">[3h ago]</text>
-    <text x="78"  y="0" class="log-repo">sjoblomj/mpqcli</text>
-    <text x="357" y="0" class="log-msg">Address review: Windows wide-path stat,...</text>
+    <text x="0"   y="0" class="log-time">[5h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/war10ck</text>
+    <text x="357" y="0" class="log-msg">Bump version</text>
   </g>
   <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
     <text x="0"   y="0" class="log-time">[5h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/war10ck</text>
+    <text x="357" y="0" class="log-msg">Feature/support gpipe (#66)</text>
+  </g>
+  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
+    <text x="0"   y="0" class="log-time">[6h ago]</text>
+    <text x="78"  y="0" class="log-repo">sjoblomj/mpqcli</text>
+    <text x="357" y="0" class="log-msg">Updated docs with add --update flowchart</text>
+  </g>
+  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
+    <text x="0"   y="0" class="log-time">[8h ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/moon</text>
+    <text x="357" y="0" class="log-msg">Merge pull request #10 from thomaslaure...</text>
+  </g>
+  <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
+    <text x="0"   y="0" class="log-time">[22h ago]</text>
+    <text x="78"  y="0" class="log-repo">thegraydot/bzdiff</text>
+    <text x="357" y="0" class="log-msg">Merge pull request #8 from thegraydot/f...</text>
+  </g>
+  <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
+    <text x="0"   y="0" class="log-time">[1d ago]</text>
+    <text x="78"  y="0" class="log-repo">sjoblomj/mpqcli</text>
+    <text x="357" y="0" class="log-msg">Address review: Windows wide-path stat,...</text>
+  </g>
+  <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
+    <text x="0"   y="0" class="log-time">[1d ago]</text>
     <text x="78"  y="0" class="log-repo">thomaslaurenson/moon</text>
     <text x="357" y="0" class="log-msg">Added the 0.3.0 changelog entry</text>
   </g>
-  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
-    <text x="0"   y="0" class="log-time">[5h ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/moon</text>
-    <text x="357" y="0" class="log-msg">Named release assets explicitly instead...</text>
-  </g>
-  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+  <g class="stagger" style="animation-delay: 760ms" transform="translate(0, 154)">
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">thomaslaurenson/pass-env</text>
     <text x="357" y="0" class="log-msg">Fix/entry name validation (#31)</text>
-  </g>
-  <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-eResearch/uvos</text>
-    <text x="357" y="0" class="log-msg">Updated packages</text>
-  </g>
-  <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
-    <text x="0"   y="0" class="log-time">[2d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_rbd_scanner</text>
-    <text x="357" y="0" class="log-msg">Added missing lib source that ws blocke...</text>
-  </g>
-  <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
-    <text x="0"   y="0" class="log-time">[2d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_rbd_scanner</text>
-    <text x="357" y="0" class="log-msg">Feature/plugin lib refactor (#12)</text>
-  </g>
-  <g class="stagger" style="animation-delay: 760ms" transform="translate(0, 154)">
-    <text x="0"   y="0" class="log-time">[3d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/gpipe</text>
-    <text x="357" y="0" class="log-msg">Installed Go in the action, trimmed com...</text>
   </g>
     </g>
   </g>
