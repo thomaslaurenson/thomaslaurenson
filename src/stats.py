@@ -309,10 +309,11 @@ class GitHubStats:
                 run_start = None
             prev_has = has
 
-        # Current streak (most-recent weekday backwards). Grace period: if today UTC has 0
-        # contributions and is still a weekday in NZT, skip ahead to the previous weekday.
+        # Current streak (most-recent weekday backwards). The calendar is dated in LOCAL_TZ,
+        # so its last entry is always today in NZT. Grace period: if today has no contributions
+        # yet and is still a weekday, fall back to the previous weekday rather than reporting a
+        # broken streak partway through the day.
         today_nzt = datetime.now(LOCAL_TZ).date()
-        today_utc = datetime.now(timezone.utc).date()
 
         current_len = 0
         current_start = None
@@ -320,7 +321,7 @@ class GitHubStats:
         last_idx = len(days_list) - 1
         last_day_entry, last_count = days_list[last_idx]
 
-        if last_count == 0 and today_nzt.weekday() < 5 and last_day_entry == today_utc:
+        if last_count == 0 and today_nzt.weekday() < 5 and last_day_entry == today_nzt:
             last_idx -= 1
 
         if last_idx >= 0:
