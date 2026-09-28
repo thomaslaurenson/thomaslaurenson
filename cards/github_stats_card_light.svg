@@ -81,7 +81,7 @@
   <g data-testid="main-card-body" transform="translate(0, 33)">
     <g data-testid="rank-circle" transform="translate(506.5, 60.5)">
       <circle class="rank-circle-rim" cx="-10" cy="8" r="40" />
-      <circle class="rank-circle" cx="-10" cy="8" r="40" stroke-dashoffset="26.901" />
+      <circle class="rank-circle" cx="-10" cy="8" r="40" stroke-dashoffset="26.964" />
       <g class="rank-text">
         <text x="-10" y="8" dominant-baseline="central" text-anchor="middle" data-testid="level-rank-icon">A+</text>
       </g>
