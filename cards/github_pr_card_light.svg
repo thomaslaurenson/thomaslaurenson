@@ -64,17 +64,23 @@
     <g transform="translate(12, 44)">
         <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
     <text x="0"   y="0" class="pr-icon pr-merged">+</text>
+    <text x="20"  y="0" class="pr-repo">akyriako/o7k</text>
+    <text x="230" y="0" class="pr-title">support authentication from OS_* environment ...</text>
+    <text x="572" y="0" class="pr-time">8h ago</text>
+  </g>
+  <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
+    <text x="0"   y="0" class="pr-icon pr-merged">+</text>
     <text x="20"  y="0" class="pr-repo">ladislav-zezula/StormLib</text>
     <text x="230" y="0" class="pr-title">Added definitions for *64 symbols in StormPor...</text>
     <text x="572" y="0" class="pr-time">7mo ago</text>
   </g>
-  <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
+  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
     <text x="0"   y="0" class="pr-icon pr-closed">x</text>
     <text x="20"  y="0" class="pr-repo">NeCTAR-RC/openstack-bash-cr...</text>
     <text x="230" y="0" class="pr-title">Fixed chchreds typo</text>
     <text x="572" y="0" class="pr-time">13mo ago</text>
   </g>
-  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
+  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
     <text x="0"   y="0" class="pr-icon pr-merged">+</text>
     <text x="20"  y="0" class="pr-repo">tclark/op-papers</text>
     <text x="230" y="0" class="pr-title">Sysadmin: Updated course directive for 2019 d...</text>
