@@ -21,12 +21,12 @@ logger = logging.getLogger(__name__)
 PLAN_ENTRIES: list[tuple[str, str]] = [
     ("BUILDING", "Security utilities for Linux and OpenStack"),
     ("BUILDING", "C++ utility apps for vanilla World of Warcraft"),
-    ("HACKING", "Binary differencing algorithms reversing"),
+    ("REVERSING", "Old school game clients"),
     ("HACKING", "Escaping highly restricted egress environments"),
     ("PLAYING", "Torchlight II"),
-    ("READING", "The Good Guys Series by Eric Ugland"),
-    ("LISTENING", "Tool - Lateralus"),
-    ("EATING", "Jazzed up Shin Ramyun Black"),
+    ("READING", "The Bad Guys Series by Eric Ugland"),
+    ("LISTENING", "Doom Soundtrack by Mick Gordon"),
+    ("EATING", "Pho"),
 ]
 
 _LINE_HEIGHT = 22
