@@ -1,6 +1,12 @@
-name: Update Cards Daily
+name: Update Cards
 
 on:
+  push:
+    branches:
+      - main
+    # Skip pushes that only touch generated cards, so a bot commit can never retrigger this.
+    paths-ignore:
+      - "cards/**"
   schedule:
     # 22:00 NZST / 23:00 NZDT. Cron is UTC-only; late starts absorbed by src/stats.py.
     - cron: "0 10 * * *"
@@ -15,6 +21,11 @@ on:
           - INFO
           - DEBUG
           - NONE
+
+# Queue overlapping runs (e.g. a push during the scheduled run) so their pushes don't collide.
+concurrency:
+  group: update-cards
+  cancel-in-progress: false
 
 jobs:
   generate-cards:
