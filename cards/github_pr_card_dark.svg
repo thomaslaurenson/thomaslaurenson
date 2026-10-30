@@ -78,7 +78,7 @@
     <text x="0"   y="0" class="pr-icon pr-closed">x</text>
     <text x="20"  y="0" class="pr-repo">NeCTAR-RC/openstack-bash-cr...</text>
     <text x="230" y="0" class="pr-title">Fixed chchreds typo</text>
-    <text x="572" y="0" class="pr-time">13mo ago</text>
+    <text x="572" y="0" class="pr-time">14mo ago</text>
   </g>
   <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
     <text x="0"   y="0" class="pr-icon pr-merged">+</text>
