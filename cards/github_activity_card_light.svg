@@ -51,34 +51,34 @@
     <!-- Log lines injected by Python (_build_log_lines_svg) -->
     <g transform="translate(12, 44)">
         <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">thegraydot/oneonetwo</text>
     <text x="357" y="0" class="log-msg">Merge pull request #23 from thegraydot/...</text>
   </g>
   <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
+    <text x="78"  y="0" class="log-repo">thegraydot/oneonetwo</text>
+    <text x="357" y="0" class="log-msg">Merge pull request #22 from thegraydot/...</text>
+  </g>
+  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">thegraydot/squall</text>
     <text x="357" y="0" class="log-msg">Merge pull request #25 from thegraydot/...</text>
   </g>
-  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">thegraydot/squall</text>
     <text x="357" y="0" class="log-msg">Merge pull request #24 from thegraydot/...</text>
   </g>
-  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
-    <text x="78"  y="0" class="log-repo">thegraydot/oneonetwo</text>
-    <text x="357" y="0" class="log-msg">Merge pull request #19 from thegraydot/...</text>
-  </g>
   <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
     <text x="0"   y="0" class="log-time">[2d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/war10ck</text>
-    <text x="357" y="0" class="log-msg">Feature/desktop polish and thumb (#81)</text>
+    <text x="78"  y="0" class="log-repo">UoA-SRE/ansible</text>
+    <text x="357" y="0" class="log-msg">Forward Vault audit and admin logs to t...</text>
   </g>
   <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
-    <text x="0"   y="0" class="log-time">[2d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/thumb</text>
-    <text x="357" y="0" class="log-msg">Fixed Makefile spacing</text>
+    <text x="0"   y="0" class="log-time">[3d ago]</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/war10ck</text>
+    <text x="357" y="0" class="log-msg">Feature/desktop polish and thumb (#81)</text>
   </g>
     </g>
   </g>
