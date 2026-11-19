@@ -51,44 +51,44 @@
     <!-- Log lines injected by Python (_build_log_lines_svg) -->
     <g transform="translate(12, 44)">
         <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-eResearch/cercuripy</text>
-    <text x="357" y="0" class="log-msg">Added a landing page linking to Grafana...</text>
+    <text x="0"   y="0" class="log-time">[15h ago]</text>
+    <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_rbd_scanner</text>
+    <text x="357" y="0" class="log-msg">Feature/apache http2 (#24)</text>
   </g>
   <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
     <text x="0"   y="0" class="log-time">[1d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-eResearch/cercuripy</text>
-    <text x="357" y="0" class="log-msg">Stopped Authelia and Grafana taking bas...</text>
+    <text x="78"  y="0" class="log-repo">thegraydot/graydex</text>
+    <text x="357" y="0" class="log-msg">Moved to Go 1.27, bumped cobra, toml an...</text>
   </g>
   <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
     <text x="0"   y="0" class="log-time">[1d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_uc_vault</text>
-    <text x="357" y="0" class="log-msg">Added the cercuripy Authelia secrets to...</text>
+    <text x="78"  y="0" class="log-repo">UoA-eResearch/cercuripy</text>
+    <text x="357" y="0" class="log-msg">Feature/caddy authelia (#69)</text>
   </g>
   <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
     <text x="0"   y="0" class="log-time">[1d ago]</text>
-    <text x="78"  y="0" class="log-repo">thegraydot/bzdiff</text>
-    <text x="357" y="0" class="log-msg">Released 0.4.0</text>
+    <text x="78"  y="0" class="log-repo">thomaslaurenson/smount</text>
+    <text x="357" y="0" class="log-msg">Bumped golang.org/x/term to 0.48.0, add...</text>
   </g>
   <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
     <text x="0"   y="0" class="log-time">[1d ago]</text>
     <text x="78"  y="0" class="log-repo">thegraydot/bzdiff</text>
-    <text x="357" y="0" class="log-msg">Released 0.4.0</text>
+    <text x="357" y="0" class="log-msg">Merge pull request #21 from thegraydot/...</text>
   </g>
   <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
-    <text x="0"   y="0" class="log-time">[4d ago]</text>
-    <text x="78"  y="0" class="log-repo">thegraydot/mpqcli</text>
-    <text x="357" y="0" class="log-msg">Fix filetime issue in test</text>
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
+    <text x="78"  y="0" class="log-repo">UoA-eResearch/cercuripy</text>
+    <text x="357" y="0" class="log-msg">Added a landing page linking to Grafana...</text>
   </g>
   <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
-    <text x="0"   y="0" class="log-time">[4d ago]</text>
-    <text x="78"  y="0" class="log-repo">thegraydot/mpqcli</text>
-    <text x="357" y="0" class="log-msg">Fix/path separators (#190)</text>
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
+    <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_uc_vault</text>
+    <text x="357" y="0" class="log-msg">Added the cercuripy Authelia secrets to...</text>
   </g>
   <g class="stagger" style="animation-delay: 760ms" transform="translate(0, 154)">
-    <text x="0"   y="0" class="log-time">[5d ago]</text>
-    <text x="78"  y="0" class="log-repo">UoA-SRE/ansible</text>
-    <text x="357" y="0" class="log-msg">Feature/terraform providers (#215)</text>
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
+    <text x="78"  y="0" class="log-repo">thegraydot/bzdiff</text>
+    <text x="357" y="0" class="log-msg">Released 0.4.0</text>
   </g>
     </g>
   </g>
