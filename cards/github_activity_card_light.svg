@@ -51,44 +51,44 @@
     <!-- Log lines injected by Python (_build_log_lines_svg) -->
     <g transform="translate(12, 44)">
         <g class="stagger" style="animation-delay: 200ms" transform="translate(0, 0)">
-    <text x="0"   y="0" class="log-time">[14h ago]</text>
+    <text x="0"   y="0" class="log-time">[1d ago]</text>
     <text x="78"  y="0" class="log-repo">thegraydot/mpqcli</text>
     <text x="357" y="0" class="log-msg">Fix/locales extraction and reading (#192)</text>
   </g>
   <g class="stagger" style="animation-delay: 280ms" transform="translate(0, 22)">
-    <text x="0"   y="0" class="log-time">[19h ago]</text>
+    <text x="0"   y="0" class="log-time">[1d ago]</text>
+    <text x="78"  y="0" class="log-repo">thegraydot/mpqcli</text>
+    <text x="357" y="0" class="log-msg">Added the 0.13.2 changelog entry and bu...</text>
+  </g>
+  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
+    <text x="0"   y="0" class="log-time">[1d ago]</text>
     <text x="78"  y="0" class="log-repo">thomaslaurenson/filenget</text>
     <text x="357" y="0" class="log-msg">Fix/share link shapes (#6)</text>
   </g>
-  <g class="stagger" style="animation-delay: 360ms" transform="translate(0, 44)">
-    <text x="0"   y="0" class="log-time">[21h ago]</text>
+  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
+    <text x="0"   y="0" class="log-time">[1d ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_rbd_scanner</text>
     <text x="357" y="0" class="log-msg">Refactor/adhoc cleanup (#25)</text>
   </g>
-  <g class="stagger" style="animation-delay: 440ms" transform="translate(0, 66)">
-    <text x="0"   y="0" class="log-time">[22h ago]</text>
+  <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
+    <text x="0"   y="0" class="log-time">[1d ago]</text>
     <text x="78"  y="0" class="log-repo">thomaslaurenson/gpipe</text>
     <text x="357" y="0" class="log-msg">Bumped cosign-installer to 4.1.3, pinne...</text>
   </g>
-  <g class="stagger" style="animation-delay: 520ms" transform="translate(0, 88)">
-    <text x="0"   y="0" class="log-time">[1d ago]</text>
+  <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
+    <text x="0"   y="0" class="log-time">[2d ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-eResearch/nectar_rbd_scanner</text>
     <text x="357" y="0" class="log-msg">Feature/apache http2 (#24)</text>
   </g>
-  <g class="stagger" style="animation-delay: 600ms" transform="translate(0, 110)">
-    <text x="0"   y="0" class="log-time">[2d ago]</text>
+  <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
+    <text x="0"   y="0" class="log-time">[3d ago]</text>
     <text x="78"  y="0" class="log-repo">thegraydot/graydex</text>
     <text x="357" y="0" class="log-msg">Moved to Go 1.27, bumped cobra, toml an...</text>
   </g>
-  <g class="stagger" style="animation-delay: 680ms" transform="translate(0, 132)">
-    <text x="0"   y="0" class="log-time">[2d ago]</text>
+  <g class="stagger" style="animation-delay: 760ms" transform="translate(0, 154)">
+    <text x="0"   y="0" class="log-time">[3d ago]</text>
     <text x="78"  y="0" class="log-repo">UoA-eResearch/cercuripy</text>
     <text x="357" y="0" class="log-msg">Feature/caddy authelia (#69)</text>
-  </g>
-  <g class="stagger" style="animation-delay: 760ms" transform="translate(0, 154)">
-    <text x="0"   y="0" class="log-time">[2d ago]</text>
-    <text x="78"  y="0" class="log-repo">thomaslaurenson/smount</text>
-    <text x="357" y="0" class="log-msg">Bumped golang.org/x/term to 0.48.0, add...</text>
   </g>
     </g>
   </g>
